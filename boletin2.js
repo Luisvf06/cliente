@@ -31,7 +31,7 @@ a. Es de día desde las 7:30 hasta las 14:00 horas.
 b. Es tarde desde las 14:01 hasta las horas 20:30.
 c. Es noche desde las 20:31 hasta las horas 7:29.
 */
-
+/*
 horas=new Date(0,0,0,7,45,12);
 hora=horas.getHours();
 minuto=horas.getMinutes();
@@ -57,7 +57,7 @@ else if((hora>=20 & minuto>=31) & (hora<=7 & minuto==29)){
 else{
     console.log("Error");
 }
-
+*/
 /*Para comprobar si un año es o no bisiesto se usa la siguiente regla: 
 “Un año es bisiesto si es divisible por 400, o bien es divisible por 4 pero no por 100”. 
 Diseñar un programa que utilizando una variable lógica que tenga valor cierto si el año es bisiesto y falso si no lo es.*/
@@ -104,7 +104,7 @@ else if(x>0&y<0){
 }
 */
 //Diseñar un algoritmo para escribir en pantalla los n primeros números naturales, sus cuadrados, sus cubos y la suma de todos ellos
-var n=4;
+/*var n=4;
 var suma=0
 for(var i=0;i<=n;i++){
     suma +=i;
@@ -113,7 +113,7 @@ for(var i=0;i<=n;i++){
     console.log("cubos: ",i*i*i);
     
 }
-console.log("suma: ",suma);
+console.log("suma: ",suma);*/
 
 //Hallar el menor, el mayor y la media de un conjunto de números positivos leídos de teclado.
 /*
@@ -237,7 +237,7 @@ console.log(tarot);
 Para ello disponemos de un documento donde se recoge si se trata de un hombre (H) o una mujer (M) y su sueldo correspondiente. 
 La entrada de datos termina cuando se lee un * como sexo. 
 Se validarán todas las entradas, el sexo será H o M y el sueldo entre los 1000 y 2000 euros independientemente de que el trabajador sea hombre o mujer.*/
-var sexo=prompt("introduce M o H");
+/*var sexo=prompt("introduce M o H");
 var salario=parseFloat(prompt("introduce el salario de esa persona"));
 var suma=salario;
 var contador=1;
@@ -256,7 +256,67 @@ while (sexo!="*") {
     suma+=salario;}
 }}
 
-console.log("media: ",suma/contador, "contador: ", contador);
+console.log("media: ",suma/contador, "contador: ", contador);*/
 
-/*Diseñar un programa que, dada una cierta cantidad de dinero que se leerá desde la entrada estándar, 
+/*15 Diseñar un programa que, dada una cierta cantidad de dinero que se leerá desde la entrada estándar, 
 calcule cuál es el número mínimo de monedas de curso legal que equivalen a dicha cantidad de dinero.*/
+/*var dinero=parseFloat(prompt("introduce una cantidad"));
+var moneda2=0;
+var moneda1=0;
+var moneda50=0;
+var moneda20=0;
+var moneda10=0;
+var moneda05=0;
+var moneda02=0;
+var moneda01=0;
+while (dinero>=0.01){
+    if (dinero>=2){
+        moneda2 = Math.floor(dinero/2);
+        dinero=(dinero%2);
+    }else if(dinero>=1){
+        moneda1 = Math.floor(dinero/1);
+        dinero=(dinero%1);
+    }else if(dinero>=0.50){
+        moneda50=Math.floor(dinero/0.50);
+        dinero=(dinero%0.5);
+    }else if(dinero>=0.2){
+        moneda20=Math.floor(dinero/0.2);
+        dinero=(dinero%0.2);
+    }else if(dinero>=0.1){
+        moneda10=Math.floor(dinero/0.1);
+        dinero=(dinero%0.1);
+    }else if(dinero>=0.05){
+        moneda05=Math.floor(dinero/0.05);
+        dinero=(dinero%0.05);
+    }else if(dinero>=0.02){
+        moneda02=Math.floor(dinero/0.02);
+        dinero=(dinero%0.02);
+    }else if(dinero>=0.01){
+        moneda01=dinero%0.01;
+    }
+}
+console.log("Monedas de 2€: ",moneda2, "Monedas de 1€: ",moneda1, "Monedas de 0.50€: ",moneda50, 
+"Monedas de 0.2€: ",moneda20, "Monedas de 0.1€: ",moneda10, "Monedas de 0.05€: ",
+moneda05,"Monedas de 0.02€: ",moneda02,"Monedas de 0.01€: ",moneda01);
+*/
+/*16 Diseñar un programa que lea de teclado un número entero positivo en base 10 y escriba su correspondiente 
+representación binaria usando la técnica de divisiones sucesivas.*/
+/*var decimal=parseInt(prompt("introduce un numero en base 10"));
+var contador=0;
+var binario="";
+var cadena="";
+while(decimal>=1){
+    cadena=cadena+(decimal%2).toString();
+    decimal=Math.floor(decimal/2);
+}
+for (var n=cadena.length;n>=0;n--){
+    binario= cadena.charAt(n);
+    console.log(binario);
+}
+*/
+
+/*Escribe un algoritmo que lea desde la entrada estándar dos fechas dadas por día, mes y año 
+y calcule cuál de ellas es anterior a la otra. */
+
+
+
