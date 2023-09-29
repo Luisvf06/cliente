@@ -317,6 +317,25 @@ for (var n=cadena.length;n>=0;n--){
 
 /*Escribe un algoritmo que lea desde la entrada estándar dos fechas dadas por día, mes y año 
 y calcule cuál de ellas es anterior a la otra. */
-
+const fecha1 = new Date(prompt("introduce una fecha en formato mm/dd/yyyy"));
+const fecha2 = new Date(prompt("introduce una fecha en formato mm/dd/yyyy"));
+if (fecha1.getFullYear()>fecha2.getFullYear()){
+    console.log(fecha1, " es anterior a ",fecha2);
+}else if(fecha1.getFullYear()<fecha2.getFullYear()){
+    console.log(fecha2, "es anterior a ",fecha1);
+}
+else{
+    if(fecha1.getMonth()>fecha2.getMonth()){
+        console.log(fecha2," es anterior a ", fecha1)
+    }else if(fecha1.getMonth()<fecha2.getMonth()){
+        console.log(fecha1," es anterior a",fecha2);
+    }else{
+        if (fecha1.getDay()>fecha2.getDay()){
+            console.log(fecha2, " es anterior a ",fecha1);
+        }else if(fecha1.getDay()<fecha2.getDay()){
+            console.log(fecha1," es anterior a ",fecha2);
+        }else{console.log("ambas fechas son iguales");}
+    }
+}
 
 
