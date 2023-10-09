@@ -116,7 +116,7 @@ document.write(edad);*/
 /*7 Diseñar un script que lea una dirección de email y la valide. 
 No se terminará hasta introducir una dirección correcta. 
 Modificar el ejercicio anterior para una vez validado el correo mostrar el usuario y el servidor de correo en dos mensajes.*/
-var regu=new RegExp(/.*@\w+\.\w+/i);
+/*var regu=new RegExp(/.*@\w+\.\w+/i);
 do {var email=prompt("introduce un email")}
 while (regu.test(email)==false);
 var reguUsuario=new RegExp(/.*(?=@)/);
@@ -125,5 +125,61 @@ var usuario= reguUsuario.exec(email);
 var dominio= reguServer.exec(email);
 document.write("email ",email,"\n", "usuario" , usuario,"\n dominio ", dominio);
 //luis.vazquez.franco.al@iespoligonosur.org
+*/
+/*8 Realizar un programa que compruebe si una palabra es palíndromo, es decir, 
+si se lee igual de izquierda a derecha que de derecha a izquierda. Por ejemplo: RADAR, ARA....*/
+var texto=prompt("introduce una palabra");
+var inversa="";
+for(i=texto.length;i>0;i--){
+    inversa+=texto[i];
+}
+if(texto==inversa){
+    document.write(texto," es un palindromo");
+}else{texto, " no es un palindromo"}
 
+
+
+
+
+/*12 Realiza un programa que compruebe mediante expresiones regulares si un usuario ha introducido una matrícula de vehículo válida. 
+Si el usuario añade la matrícula correctamente, formatea la cadena para que todas sean guardadas (imagina que luego se guardarán en una BBDD) 
+de la misma forma, en mayúsculas y con un guión entre letras y números, por ejemplo: ABC-1234.*/
+/*var matricula=prompt("itnroduce una matricula");
+var regu=/[a-z]{3}\d{4}/im;
+var formateado="";
+if (regu.test(matricula)==true){
+    formateado=matricula.substring(0,3)+"-"+matricula.substring(3,7);
+    document.write(formateado);
+}else{document.write("matricula no valida")}
+*/
+/*13 Diseña un programa que valide un código postal español, debe tener 5 números y el código postal «más alto» debería ser 52999. 
+Es decir, no existe un código postal en España que empiece por 53 o superior.*/
+/*var cp= parseInt(prompt("introduce un codigo postal valido"));
+var regu=(/\d{5}/);
+if (regu.test(cp)==true){
+while (cp<=999|cp>52999){
+    cp=parseInt(prompt("introduce un codigo postal valido"));
+}if (cp>=1000|cp<=52999){
+    document.write("codigo postal valido");
+}}else{document.write("introduce un código")}*/
+
+/*14 Valida con una expresión regular el horario de formato de 24 hrs, por ejemplo 14:45 o 08:12.*/
+/*var hora="00:00";
+var rege=(/\d{2}:\d{2}/);
+if (rege.test(hora)==true){
+    var horas= hora.substring(0,2);
+    var minutos=hora.substring(3,5);
+    if (horas>24|horas<0|minutos<0|minutos>60){
+        document.write("hora no valida")
+    }else{document.write(hora," tiene un formato valido")}
+}document.write("hora ",hora)*/
+
+/*15 Los números pueden tener entre 1 y 3 dígitos. 
+Solicita el ingreso de la cordenada de un punto. El formato a ingresar por teclado es (999,999)*/
+/*var regu=/\d{3},\d{3}/;
+var coordenada=prompt("introduce las coordenadas de un punto entre 0 y 999");
+while(regu.test(coordenada)==false | coordenada.length!=7){
+    coordenada=prompt("introduce las coordenadas de un punto entre 0 y 999");
+}document.write("coordenadas validas");
+*/
 
