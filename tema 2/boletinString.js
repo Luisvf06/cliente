@@ -41,8 +41,8 @@ console.log(contador, comienzaC,contieneNH);*/
 
 /*2 Leer un texto de la entrada estándar y contar cuántas palabras tiene, cuántas de ellas empiezan por A. 
 Suponemos que una palabra está separada de otra por uno o más espacios, un tabulador o un salto de línea y el texto acaba con un punto, 
-no existe ningún punto y aparte y las palabras son todas correctas*//*
-var texto=("casa. aguas, parque. y caña, ley, cana y canasta c++, ayuda acostar  acomodar");
+no existe ningún punto y aparte y las palabras son todas correctas
+var texto=("casa. aguas, parque. y caña, ley, cana y canasta, ayuda acostar  acomodar");
 var regu= new RegExp(/\w+[^,][^\s][^\t]/gi);
 var reguA= new RegExp(/\ba\w+[^\s][^\t]/gi);       
 var coincidencias = regu.exec(texto);
@@ -60,51 +60,56 @@ while (coincidenciasA !==null){
 document.write('palabras: ',contador,'palabras empiezan con a: ',contadorA);*/
 
 /*2.2 Con expresiones regulares, leer desde teclado una cadena con una serie de nombres. 
-Contar cuántos nombres se han leído, cuántos comienzan C.
-var cadena=prompt("introduce una serie de nombres");
-//(/(^c\w+|\b(y\sc)+\w*)/gmi) entrada casa, aguas, parque y caña, ley, cana y canasta c++
+Contar cuántos nombres se han leído, cuántos comienzan C.*/
+/*var cadena = 'Carmen Cana Celeste Gabriela';
+var regex = /\b\w+\b/gi;
+var regexC = /^C/gi;
+var comienzan_conC = 0;
 
-var regu= new RegExp(/(\w+[^\sy\s])/gmi)
-var reguC=new RegExp(/^c\w+|\bc+\w*|\b(y\sc)w+/gmi)
-var nombres=regu.exec(cadena).length;
-var nombresC=(reguC.exec(cadena)).length;
-//no da lo mismo que en la web para hacer las pruebas
-document.write("empiezan por c: ",nombresC," nombres en total: ",nombres)
+var palabras = cadena.match(regex);
+var numPalabras = palabras.length;
 
-*/
+for (let i = 0; i < palabras.length; i++){
+    regexC.lastIndex = 0;
+    if(regexC.test(palabras[i])){
+        comienzan_conC++;
+    }
+}
+document.write("La cadena contiene " + numPalabras + " de las cuales " + comienzan_conC + " comienzan por C");*/
+
+
 /*Pedimos una cadena de texto que sabemos que puede contener paréntesis. Realiza un script que extraiga la cadena que se encuentra entre los paréntesis. 
 Ejemplo: Si escribimos el texto “Hola (que) tal” se mostrará “que”. 
 Si no existe el signo “(“ mostrará una cadena vacía y si existe el signo  “(“pero no el signo “)” 
 mostrará desde el primer paréntesis hasta el final.*/
-/*var cadena=( "esto es una cadena (con parentesis)"); //no funciona
-var regu=new RegExp(/[\b( .* )\b]/gi);
+/*var cadena=( "esto es una cadena (con parentesis) en medio"); //no funciona
+var reParentesis=new RegExp(/\(.*\)/)
+if (reParentesis.exec(cadena)!=null){
+    console.log(reParentesis.exec(cadena));
+}else{console.log()}//no se hace la condicion de falta de parentesis
+var regu=new RegExp(/[\b(.*)\b]/gi);
+
 var parentesis= regu.exec(cadena);
+
 document.write(parentesis);
-console.log(parentesis);
-*/
+console.log(parentesis);*/
+
 
 //Realiza un script que pida una cadena de texto y la devuelva al revés. 
 //Es decir, si tecleo “hola que tal” deberá mostrar “lat euq aloh”.
-//var cadena=prompt("ingresa una cadena");
-//var regu=new RegExp(/.*/mig);
-/*var derecha=regu.exec(cadena);
-var caracter=""
-if (cadena.length>0){
-for (var i=derecha.length-1;i>0;i--){
-    caracter+=derecha[i];
-}}else{console.log("no se inseta bien")}
-console.log(caracter);*/
-/*var cadena=prompt("ingresa una cadena"); //no funciona
-var regu=new RegExp(/.*///);
-/*var derecha=cadena.match(regu);
-var caracter=""
-for (let i=derecha.length-1;i>=0;i--){
-    caracter+=derecha[i];
-    console.log(caracter);
-    document.write(caracter);
+
+/*
+var cadena = prompt("Ingresa una cadena");
+
+var inversa = "";
+for (var i = cadena.length - 1; i >= 0; i--) {
+    inversa += cadena.substring(i, i + 1);
 }
-console.log(caracter);
-document.write(caracter);*/
+
+document.write(inversa);
+console.log(inversa);
+*/
+
 
 /*Hacer un programa en el que el usuario introduzca, nombre, profesión y edad separado por comas. 
 Después el programa debe mostrar la edad del usuario por pantalla.*/
@@ -128,17 +133,31 @@ document.write("email ",email,"\n", "usuario" , usuario,"\n dominio ", dominio);
 */
 /*8 Realizar un programa que compruebe si una palabra es palíndromo, es decir, 
 si se lee igual de izquierda a derecha que de derecha a izquierda. Por ejemplo: RADAR, ARA....*/
-var texto=prompt("introduce una palabra");
-var inversa="";
-for(i=texto.length;i>0;i--){
+/*var texto=prompt("introduce una palabra");
+var inversa= " ";
+for(i=texto.length-1;i>=0;i--){
     inversa+=texto[i];
+    console.log(inversa);
 }
-if(texto==inversa){
-    document.write(texto," es un palindromo");
-}else{texto, " no es un palindromo"}
+if(texto==inversa.trim()){
+    console.log(texto," es un palindromo");
+}else{console.log(texto, " no es un palindromo")}*/
 
 
+/*9 Realiza un supertrim de una cadena, eliminando todos los espacios duplicados*/
+var espacio = new RegExp(/\s\s/);
+var cadena = "una cadena  random con muchos espacios";
+var comprobar = cadena.search(espacio);
 
+while (comprobar != -1 && cadena.indexOf("  ") != -1) {
+    cadena = cadena.replace("  ", " ");
+    comprobar = cadena.search(espacio);
+}
+
+console.log(comprobar, cadena);
+
+
+/*10Diseña un programa que indique el carácter más repetido dentro de una cadena de caracteres.*/
 
 
 /*12 Realiza un programa que compruebe mediante expresiones regulares si un usuario ha introducido una matrícula de vehículo válida. 
