@@ -145,6 +145,7 @@ if(texto==inversa.trim()){
 
 
 /*9 Realiza un supertrim de una cadena, eliminando todos los espacios duplicados*/
+/*
 var espacio = new RegExp(/\s\s/);
 var cadena = "una cadena  random con muchos espacios";
 var comprobar = cadena.search(espacio);
@@ -155,7 +156,7 @@ while (comprobar != -1 && cadena.indexOf("  ") != -1) {
 }
 
 console.log(comprobar, cadena);
-
+*/
 
 /*10Diseña un programa que indique el carácter más repetido dentro de una cadena de caracteres.*/
 
@@ -202,3 +203,270 @@ while(regu.test(coordenada)==false | coordenada.length!=7){
 }document.write("coordenadas validas");
 */
 
+
+//Ejercicios con Math
+
+/*Hacer un programa que muestre un menú de opciones con las siguientes operaciones posibles:
+Redondeo a su inmediato superior de un número
+Redondeo a su inmediato inferior de un número
+Redondeo al número más cercano
+Cálculo del número máximo entre dos dados
+Cálculo del número mínimo entre dos dados
+Cálculo de un número elevado a otro
+Cálculo de la raíz cuadrada de un número
+*/
+/*
+document.write('Elija una opcion: <br> 1: redondear un numero a su inmediato superior <br> 2: redondear un numero a su inmediato inferior <br> 3: Redondear al numero mas cercano<br>')
+document.write('4:Calcular el numero maximo entre dos <br>5:calcular el minimo entre dos numeros <br> 6:Calcular la potencia de dos numeros<br>7:Calcular la raiz cuadrada de otro numero')
+
+var entrada=parseInt(prompt('Escoge una operación'));
+switch(entrada){
+    case(1):
+    var entrada2=parseFloat(prompt('introduce un numero'))
+    document.write(Math.ceil(entrada2));
+    break;
+    case(2):
+    var entrada2=parseFloat(prompt('introduce un numero'))
+    document.write(Math.floor(entrada2));
+    break;
+    case(3):
+    var entrada2=parseFloat(prompt('introduce un numero'))
+    document.write(Math.round(entrada2));
+    break;
+    case(4):
+    var entrada2=parseFloat(prompt('introduce un numero'))
+    var entrada3=parseInt(prompt('Introduce otro numero'));
+    document.write('el maximo entre',entrada2,' y ',entrada3,' es ',Math.max(entrada2,entrada3));
+    break;
+    case(5):
+    var entrada2=parseFloat(prompt('introduce un numero'))
+    var entrada3=parseFloat(prompt('introduce un numero'))
+    document.write('el minimo entre',entrada2,' y ',entrada3,' es ',Math.min(entrada2,entrada3));
+    break;
+    case(6):
+    var base=parseFloat(prompt('introduce un numero'))
+    var potencia=parseFloat(prompt('introduce un numero'))
+    document.write(base**potencia);
+    break;
+    case(7):
+    var entrada2=parseFloat(prompt('introduce un numero'))
+    document.write(Math.sqrt(entrada2));
+    break;
+    default:document.write('opcion no valida')
+}
+*/
+/*17 Un proyectil disparado a un ángulo ​A tiene un alcance horizontal ​R dado por la siguiente expresión:
+
+Siendo ​V la velocidad inicial y ​G = 9,8 m/seg. Calcúlese el alcance limitando los ángulos de 0 a 90 y ​V a valores positivos.
+*//*
+var v=parseFloat(prompt('velocidad inicial'))
+var angulo=(Math.PI*(parseInt(prompt('introduce un angulo'))))/180
+var g= 9.8;
+var r;
+if (v<0 ||angulo<0||angulo>90){
+    document.write('datos no validos')
+}else{r=(2*(v**2)*Math.sin(angulo)*Math.cos(angulo))/g}
+document.write(r);
+*/
+
+/* 18 Escribir un subprograma que produzca una tabla de valores de la ecuación:
+
+Donde ​t varía entre 0 y 60. El valor del incremento de ​t será introducido como parámetro de entrada.
+Y=2*e**2-0.5*sen(0.5*t)*t*/
+/*
+var incremento=parseInt(prompt('introduce un incremento de t'))
+var contador=0;
+for(var t=0;t<=60;t+=incremento){
+    var operacion=(2*(Math.E**2)-(0.5*t*Math.sin(0.5*parseFloat(t))))
+    document.write(contador, 't= ',t,'\t\t\t'    ,operacion,'<br>')
+    contador++
+*/
+/*Generar aleatoriamente una quiniela de n columnas. Supóngase que las probabilidades son:
+➔ 50% para que salga 1
+➔ 30% para que salga x
+➔ 20% para que salga 2
+*/
+/*
+var n = parseInt(prompt('Introduce el numero de columans'))
+var fila=0;
+var numero_random=Math.random();
+for(fila;fila<13;fila++){
+    document.write('Partido ',fila,' ')
+    for(var columna=0;columna!=n;columna++){
+        var numero_random=Math.random();
+        if(columna<n-1){
+            if (numero_random<=0.5){
+                document.write('1');
+            }else if(numero_random>0.5 && numero_random<=0.8){
+                document.write('X');
+            }else{document.write('2')}
+        }else{
+            if (numero_random<=0.5){
+                document.write('1<br>');
+            }else if(numero_random>0.5 && numero_random<=0.8){
+                document.write('X<br>');
+            }else{document.write('2<br>')}
+        }
+    }
+}
+*/
+//Generar aleatoriamente una primitiva de n columnas. No funciona ninguno de los intentos
+/*
+var n = parseInt(prompt('Introduce el numero de columans'))
+var fila=0;
+var numero_random=Math.random();
+for (fila;fila<11;fila++){
+    var uno=(fila+1,fila+10,fila+20,fila+30,fila+40,'<br>')
+    for(var columna=0;columna!=n;columna++){
+        document.write(uno)
+    }
+}
+*/
+/*
+var n = parseInt(prompt('Introduce el numero de columans'))
+var fila=0;
+var numero_random=Math.random();
+for (fila;fila<11;fila++){
+    var uno=(fila+1,fila*10,fila*20,fila*30,fila*40,'<br>')
+    for(var columna=0;columna!=n;columna++){
+        document.write(uno[0]+' '+uno[1]+' '+uno[2]+' '+uno[3]+' '+uno[4]+'<br>')
+    }
+}
+*/
+
+/*Realizar un programa que generalice el algoritmo del Tarot para un número de cualquier cantidad de cifras. 
+Ejemplo: 999999999999999999999=9+.....9+9+9= 189 = 18 = 9.  (Pista: Usar log en base 10. No es obligatorio usarla)
+*/
+/*
+var numero = 911;//si al completar la suma de todos los digitos queda un nº mayor a 9, no sigue ejecutandose
+var suma = 0;
+
+
+while(Math.log10(numero)>=0){
+    suma +=numero%10;
+    //numero=Math.floor(numero/10);
+    numero=(numero-(numero%10))/10
+}
+
+document.write(suma);*/
+
+//Hacer el Tarot que comprueba que la fecha de nacimiento, introducida no es mayor que la actual.
+/*
+var nacimiento=new Date(2018, 11, 24, 10, 33)//no se usarlo con prompt
+var hoy= Date.now;
+if (nacimiento>hoy){
+    document.write('la fecha de nacimiento no puede se posterior al momento actual')
+}else{document.write(nacimiento,' fecha correcta')}
+*/
+
+/*Escribe un algoritmo que lea desde la entrada estándar dos fechas dadas por día, mes y año y calcule cuál de ellas es anterior a la otra.*/
+/*
+var fecha1=new Date(prompt('introduce una fecha en formato YYYY-MM-DD: '))
+var fecha2=new Date(prompt('introduce una fecha en formato YYYY-MM-DD: '))
+
+if(fecha1.getFullYear()>fecha2.getFullYear()){
+    document.write(fecha1, ' es posterior a ',fecha2)
+}else if(fecha1.getFullYear()<fecha2.getFullYear()){
+    document.write(fecha2,' es posterior a ',fecha1)
+}else{
+    if(fecha1.getMonth()>fecha2.getMonth()){
+        document.write(fecha1, ' es posterior a ',fecha2)
+    }else if(fecha1.getMonth()<fecha2.getMonth()){
+        document.write(fecha2, ' es posterior a ',fecha1)
+    }else{
+        if(fecha1.getDate()>fecha2.getDate()){
+            document.write(fecha1,' es posterior a ',fecha2)
+        }else if(fecha1.getDate()<fecha2.getDate()){
+            document.write(fecha2,' es posterior a',fecha1)
+        }else{document.write('ambas fechas son iguales')}
+    }
+}
+*/
+/*Realiza un algoritmo que solicite del usuario un tiempo dado en segundos y calcule y presente en pantalla dicho tiempo
+pero expresado en horas, minutos y segundos.*/
+/*
+var segundos=parseInt(prompt('introduce una cantidad de segundos'));
+var minutos;
+var horas;
+if (segundos<60){
+    horas=0
+    minutos=0}
+    else{
+while(segundos>=60){
+    minutos=Math.floor(segundos/60);
+    segundos=segundos%60;
+    if(minutos<60){horas=0}
+    else{
+    while(minutos>=60){
+        horas=Math.floor(minutos/60);
+        minutos=minutos%60
+    }}}
+}document.write('hora: ',horas,' minutos: ',minutos,' segundos: ',segundos)
+*/
+
+//Calcular de un conjunto de fechas la menor, la mayor y la diferencia en segundos entre ambas.
+/*
+var fechas = new Set();
+var minimo;
+var maximo;
+var menor;
+var mayor;
+var diferencia;
+fechas.add(new Date(prompt("Introduce una fecha en formato: yyyy-mm-dd")));
+fechas.add(new Date(prompt("Introduce una fecha en formato: yyyy-mm-dd")));
+fechas.add(new Date(prompt("Introduce una fecha en formato: yyyy-mm-dd")));
+
+for (const value of fechas) {
+    minimo = Math.min(minimo ?? value.valueOf(), value.valueOf());
+    maximo = Math.max(maximo ?? value.valueOf(), value.valueOf());
+    diferencia=(maximo-minimo)/1000;
+}
+menor=new Date(minimo)
+mayor=new Date(maximo)
+
+document.write("El mínimo: ", menor, '<br>el maximo: ',mayor,'<br>la diferencia entre ambos: ',diferencia);
+*/
+/*Realizar un programa que muestre cuántos días faltan para el próximo cumpleaños del usuario y muestre “¡Felicidades!” si es el día señalado.*/
+/*var cumple=new Date(prompt('introduce tu cumpleaños en formato yyyy-mm-dd'))
+
+var dia= cumple.getDate();
+var mes= cumple.getMonth();
+
+var hoy= new Date();
+var anho_hoy=hoy.getFullYear();
+var dia_hoy=hoy.getDate();
+var mes_hoy=hoy.getMonth();
+var anho_siguiente=(hoy.getFullYear())+1
+
+var proximo_cumple;
+var diferencia;
+if(mes<mes_hoy||mes==mes_hoy &&dia < dia_hoy){//aqui el mes de cumpleaños ya pasó, por lo que hay que esperar al anho siguiente
+    proximo_cumple=new Date(year=anho_siguiente,month=mes,date=dia);
+    diferencia= proximo_cumple-hoy;//milisegundos
+    diferencia=(((diferencia/1000)/3600)/24);//dias
+    document.write(diferencia)
+}else if(mes==mes_hoy&&dia==dia_hoy){
+    document.write('Felicidades')
+}else{
+    proximo_cumple=new Date(year=anho_hoy,month=mes,date=dia);
+    diferencia= proximo_cumple-hoy;//milisegundos
+    diferencia=(((diferencia/1000)/3600)/24);//dias  
+    document.write(diferencia)
+}
+*/
+
+/*Realizar un programa que calcule los días de la semana en que caerán los próximos 50 cumpleaños del usuario.*/
+/*var cumple=new Date(prompt('introduce tu cumpleaños en formato yyyy-mm-dd'))
+
+var dia=cumple.getDate();
+var mes=cumple.getMonth();
+var hoy=new Date();
+var anho=hoy.getFullYear();
+var dia_semana;
+
+for(var i=0;i<50;i++){
+    dia_semana=new Date(anho+i,mes,dia)
+    document.write(anho+i,' ',dia_semana.getDay(),'<br>')
+}
+*/
+/*En una nueva ventana, imprimir todas las propiedades del objeto navigator*/
