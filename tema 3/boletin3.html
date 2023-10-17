@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="boletin3.js"></script>
+	<title>Apertura y Cierre de Ventanas</title>
+	<script type="text/javascript">
+	function inicializar(){
+		document.getElementById("crear-ventana").onclick=crearNueva;
+		document.getElementById("cerrar-ventana").onclick=cerrarNueva;
+	}
+	var nuevaVentana;
+	function crearNueva(){
+		nuevaVentana = window.open("http://www.google.es","","height=400,width=800");
+	}
+	function cerrarNueva(){
+		if (nuevaVentana){
+			nuevaVentana.close(); nuevaVentana = null;
+		}
+	}
+	</script>
+</head>
+<body onLoad="inicializar()">
+	<h1 >Abrimos y cerramos ventanas</h1>
+	<form>
+		<p id="demo"> <input type="button" id="crear-ventana" value="Crear Nueva Ventana">
+		<input type="button" id="cerrar-ventana" value="Cerrar Nueva Ventana">
+        </p>
+	</form>
+
+        <script>
+            let text = "<p>Browser CodeName: " + navigator.appCodeName + "</p>" +
+            "<p>Browser Name: " + navigator.appName + "</p>" +
+            "<p>Browser Version: " + navigator.appVersion + "</p>" +
+            "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>" +
+            "<p>Browser Language: " + navigator.language + "</p>" +
+            "<p>Browser Online: " + navigator.onLine + "</p>" +
+            "<p>Platform: " + navigator.platform + "</p>" +
+            "<p>User-agent header: " + navigator.userAgent + "</p>";
+            document.getElementById("demo").innerHTML = text;
+            </script>
+</body>
+</html>
