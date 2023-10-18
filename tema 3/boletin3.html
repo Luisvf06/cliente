@@ -1,26 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="boletin3.js"></script>
-	<title>Apertura y Cierre de Ventanas</title>
-	<script type="text/javascript">
-	function inicializar(){
-		document.getElementById("crear-ventana").onclick=crearNueva;
-		document.getElementById("cerrar-ventana").onclick=cerrarNueva;
-	}
-	var nuevaVentana;
-	function crearNueva(){
-		nuevaVentana = window.open("http://www.google.es","","height=400,width=800");
-	}
-	function cerrarNueva(){
-		if (nuevaVentana){
-			nuevaVentana.close(); nuevaVentana = null;
-		}
-	}
-	</script>
+	<script type="text/javascript" src="boletin3.js"></script>
 </head>
 <body onLoad="inicializar()">
-	<h1 >Abrimos y cerramos ventanas</h1>
+	<!--<button id="abrirVentana">Abrir Ventana</button>
+    <button id="cerrarVentana">Cerrar Ventana</button>
+	-->
+	<!--<h1 >Abrimos y cerramos ventanas</h1>
 	<form>
 		<p id="demo"> <input type="button" id="crear-ventana" value="Crear Nueva Ventana">
 		<input type="button" id="cerrar-ventana" value="Cerrar Nueva Ventana">
@@ -37,6 +24,29 @@
             "<p>Platform: " + navigator.platform + "</p>" +
             "<p>User-agent header: " + navigator.userAgent + "</p>";
             document.getElementById("demo").innerHTML = text;
-            </script>
+            </script>-->
+	<p>Crear dos enlaces, uno para abrir una nueva ventana y uno para cerrarla. 
+		La nueva ventana mostrará este mensaje en una fuente grande : ​”El ojo es la ventana a tu alma “. 
+		La nueva ventana se coloca en la esquina izquierda de la pantalla 
+		, será redimensionable , tendrá una barra de desplazamiento, y estará en primer plano</p>
+	<button id="abrirVentana">Abrir Ventana</button>
+    <button id="cerrarVentana">Cerrar Ventana</button>
+
+    <script>
+        let miVentana; // Variable para almacenar la referencia a la ventana abierta
+
+        // Función para abrir una nueva ventana
+        document.getElementById('abrirVentana').addEventListener('click', function() {
+            miVentana = window.open('', '_blank', 'width=400,height=200');
+            miVentana.document.write('<p style=font-size:40px>​”El ojo es la ventana a tu alma.</p>');
+        });
+
+        // Función para cerrar la ventana abierta
+        document.getElementById('cerrarVentana').addEventListener('click', function() {
+            if (miVentana) {
+                miVentana.close();
+            }
+        });
+    </script>
 </body>
 </html>
