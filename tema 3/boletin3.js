@@ -26,8 +26,30 @@ La nueva ventana se coloca en la esquina izquierda de la pantalla
 , será redimensionable , tendrá una barra de desplazamiento, y estará en primer plano.*/
 
 		//Esta en el html
-/*En un cuadro de diálogo de alerta, muestre el alto y ancho en píxeles y la profundidad de color de su pantalla. Cada valor será separado por un salto de línea.
-Crear un programa que va a crear un reloj digital en el título. Utilice el método setInterval() para actualizar el título de la página una vez cada minuto con la hora actual.
+/*En un cuadro de diálogo de alerta, muestre el alto y ancho en píxeles y la profundidad de color de su pantalla. Cada valor será separado por un salto de línea.*/
+var altoPantalla = window.innerHeight;
+var anchoPantalla = window.innerWidth;
+var profundidadColor = screen.colorDepth;
+
+var mensaje = "Alto de la pantalla: " + altoPantalla + " píxeles\n" +
+    "Ancho de la pantalla: " + anchoPantalla + " píxeles\n" +
+    "Profundidad de color de la pantalla: " + profundidadColor;
+
+alert(mensaje);
+/*
+Crear un programa que va a crear un reloj digital en el título. Utilice el método setInterval() para actualizar el título de la página una vez cada minuto con la hora actual.*/
+function actualizarTituloConHora() {//
+	var ahora = new Date();
+	var hora = ahora.getHours();
+	var minutos = ahora.getMinutes();
+	var segundos = ahora.getSeconds();
+	var horaActual = hora + ":" + minutos + ":" + segundos;
+	document.title = "Reloj Digital - " + horaActual;
+}
+
+  // Actualiza el título cada minuto
+  setInterval(actualizarTituloConHora, 1000); // 1000 milisegundos = 1 segundo
+/*
 Crea una página web que realice las siguientes funciones desde la página principal. Crea botones para cada realizar cada una de las siguientes opciones:
 	- Abrir ventana flotante
 	- Abrir ventana flotante y detenerla
@@ -40,6 +62,8 @@ Desde la ventana secundaria se podrá realizar:
 	- Mover absoluto (500, 150)
 	- Mover relativo (0,50)
 	- Redimensionar absoluto (500,500)
-	- Redimensionar relativo (-50, -50)
+	- Redimensionar relativo (-50, -50)*/
+
+	/*
 Crear un programa en cuyo título del documento aparezca el siguiente texto animado circularmente (ver ​Ejemplo de texto animado circularmente​): ¡¡Sólo quedan 20 días de ofertas!!
 */
