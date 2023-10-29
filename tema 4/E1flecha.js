@@ -1,4 +1,4 @@
-esPerfecto = (num) => {
+const esPerfecto = (num) => {
     var suma=0;
     for (let i=1;i<num;i++){
         if(num%i==0){
