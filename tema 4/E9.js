@@ -15,8 +15,18 @@ function colocaEnMEdio(arr1,arr2){
 colocaEnMEdio([1,2,3,6,7,8],[4,5]);
 
 function uneArrays(...n){
-    var fusion;
+    var fusion=[];
     for(let i=0;i<n.length;i++){
-        fusion;
-    }
+        fusion=fusion.concat(n[i]);
+    }document.write(fusion);
 }
+uneArrays([12,3,43],[4,2,2,1])
+
+function sumaArgPares(...arg){
+    var suma=0;
+    for(let i=0;i<arg.length;i++){
+        if (arg[i]%2==0){
+            suma+=arg[i];
+        }
+    }document.write('ejercicio suma ',suma)
+}sumaArgPares(2,3,4,5,6,7,8)
