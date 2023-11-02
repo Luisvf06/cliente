@@ -1,15 +1,11 @@
-//Implementar funciones para el ejercicio anterior para imprimir los datos y para buscar una persona por apellidos, por DNI o por edad. ¿cómo podríamos optimizar la búsqueda? 
-var matriz=[
+//Implementar funciones para el ejercicio anterior para imprimir los datos y para buscar una persona por apellidos, por DNI o por fechanacimiento. ¿cómo podríamos optimizar la búsqueda? 
+/*var matriz=[
     ['luis','vazquez','29','1234A'],
     ['Paco','perez','30','12312312a'],
     ['ana','pan','10','2312']
 ]
-var dni='2312';
-var nombre='ana';
-var apellido='vazquez';
-var dni='1234A';
-var anhos='10';
-/*
+
+
 var dato='12312312a'
 const fila = matriz.findIndex(fila=>fila.includes(dato));
 const columna = matriz[fila].indexOf(dato);
@@ -23,12 +19,17 @@ function buscarapellido(dato){
         }
     }
 */
+var dni='2312';
+var nombre='ana';
+var apellido='vazquez';
+var dni='1234A';
+var nac='10';
+
 var datos=prompt('introduce nombre, apellido y dni separados por comas');
 var lista=[]
 var fila=datos.split(',')
 lista.push(fila)
 var sublista=[]
-
 function agregardatos(datos){
     while(datos!==""){
         var datos=prompt('introduce nombre, apellido y dni separados por comas');
@@ -39,15 +40,13 @@ function agregardatos(datos){
         sublista.push(lista[i])
     }
     
-}
-var id= matriz.find((persona)=>persona[3]==dni);
-document.write(id);
-var nombre1=matriz.find((persona)=>persona[0]==nombre);
+}agregardatos()
+var nombre1=lista.find((persona)=>persona[0]==nombre);
 document.write(nombre1);
-var apellidos=matriz.find((persona)=>persona[1]==apellido);
+var apellidos=lista.find((persona)=>persona[1]==apellido);
 document.write(apellidos);
+var id= lista.find((persona)=>persona[3]==dni);
+document.write(id);
+var fecnac=lista.find((persona)=>persona[2]==nac);
+document.write(fecnac);
 
-
-
-
-var name=matriz.find((persona)=>persona)
