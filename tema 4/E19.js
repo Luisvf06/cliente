@@ -7,7 +7,7 @@ var sublista=[]
 
 function agregardatos(datos){
     while(datos!==""){
-        var datos=prompt('introduce nombre, apellido y dni separados por comas');
+        var datos=prompt('introduce nombre, apellido, dni y fecha nacimietno separados por comas');
         var fila=datos.split(',')
         lista.push(fila);
     }
@@ -15,6 +15,6 @@ function agregardatos(datos){
         sublista.push(lista[i])
     }
     
-}
+}return lista
 agregardatos(datos)
 console.log(sublista);

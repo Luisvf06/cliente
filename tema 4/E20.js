@@ -1,29 +1,40 @@
 //Implementar funciones para el ejercicio anterior para imprimir los datos y para buscar una persona por apellidos, por DNI o por fechanacimiento. ¿cómo podríamos optimizar la búsqueda? 
-/*var matriz=[
-    ['luis','vazquez','29','1234A'],
-    ['Paco','perez','30','12312312a'],
-    ['ana','pan','10','2312']
-]
+/*
+Correcion Ivan
+20 
 
 
-var dato='12312312a'
-const fila = matriz.findIndex(fila=>fila.includes(dato));
-const columna = matriz[fila].indexOf(dato);
-document.write(fila,' ',columna)
+funcion ejercicio20(){
 
-var busca;
-function buscarapellido(dato){
-    for(let i=0;i<matriz.length;i++){
-        for(let j=1;j<matriz[0];j++){
-            busca=matriz[i][1].indexOf(dato)
-        }
-    }
+var lista= funcionejercicio19
+var parametro_busqueda=prompt("introduce un parametro de busqeuda")
+for (let i=0; i<lista.length;i++){
+    var res = lista[i].find(x)=>x==parametro_busqueda;
+}
+document.write(res)
+}}
+
+
+function ejercicio20(){
+    var lista=ejercicio19()
+    var parametro-busqueda=promopt("mete un parametro de busqueda")
+    var res= lista.find(elemento)=>elemento[indicedelparametroabuscar]==parametro_busqueda)
+    document.write(res)
+}
+
+
+var parametro_busqueda()=prompt(mete un parametro)
+var lista=ejercicio19();
+dni=buscarDNI(lista,parametro_busqueda)
+function buscarDNI(lista,parametro_busqueda){
+    return lista.find(elemento)=>elemento[2]==parametro_busqueda
+}
 */
-var dni='2312';
-var nombre='ana';
-var apellido='vazquez';
-var dni='1234A';
-var nac='10';
+var dni;
+var nombre;
+var apellido;
+var dni;
+var nac;
 
 var datos=prompt('introduce nombre, apellido y dni separados por comas');
 var lista=[]
