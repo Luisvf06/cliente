@@ -15,6 +15,6 @@ function calcularEdad(fecha){
 
 function mayorEdad(fecha){
     for(let i=0;i<lista.length;i++){
-        lista.find((elemento)=>elemento[2]>=fecha)
+        lista.find((elemento)=>elemento[3]>=fecha)
     }
 }
