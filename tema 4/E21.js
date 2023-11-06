@@ -38,8 +38,8 @@ function mayorEdad(){
 
 
 function buscarfecha(lista,parametro){
-    var parametrofecha=new Date(parametro)//YYYY-MM-DD
-    var mayores=lista.filter((persona)=>persona[3]<=parametrofecha)
+
+    var mayores=lista.filter((persona)=>new Date(persona[3])<=parametro)
 
     console.log(mayores)
 
