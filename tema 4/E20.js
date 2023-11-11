@@ -27,7 +27,7 @@ function buscarapellido(lista,parametro){
 }
 
 var parametro_dni=prompt('introduce un dni para buscar')
-function buscarapellido(lista,parametro){
+function buscardni(lista,parametro){
     var dni=lista.find((persona)=>persona[2]==parametro)
     console.log(dni)
     document.write(dni)
