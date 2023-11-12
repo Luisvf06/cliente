@@ -16,7 +16,7 @@ function calcularEdad(fecha){
 }return edad
 */
 
-function agregardatos(){
+function agregardatos(){//crea la array bidimensional
     var lista=[]
     var datos=prompt('introduce nombre, apellido, dni y fecha nacimietno separados por comas');
     while(datos!==""){
@@ -27,7 +27,7 @@ function agregardatos(){
     return lista
 }
 
-function mayorEdad(){
+function mayorEdad(){//dice la fecha a partir de la cual se es mayor de edad
     var hoy=new Date()
     var anho=hoy.getFullYear()
     var mes=hoy.getMonth()
@@ -37,10 +37,8 @@ function mayorEdad(){
 }
 
 
-function buscarfecha(lista,parametro){
-
+function buscarfecha(lista,parametro){//filtra del array bidimensional, por lo que nacieron antes de la fecha de mayoria de edad
     var mayores=lista.filter((persona)=>new Date(persona[3])<=parametro)
-
     console.log(mayores)
     return mayores
 }
