@@ -49,7 +49,7 @@ for (const [clave,valor]of modulos){
 }
 //g ordenar por key
 document.write('mapa ordenado<br>')
-var mapaordenado= new Map([...modulos].sort())
+var mapaordenado= new Map([...modulos].sort());//(a,b)=> b[0].localeCompare(a[0]))con esto dentro del sort se ordena de forma descendente
 for(const[clave, valor ]of mapaordenado){
     document.write(`clave: ${clave} valor: ${valor}<br>`)
 }
