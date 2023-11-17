@@ -5,5 +5,7 @@ class Persona{
         this.apellidos=apellidos;
         this.dni=dni;
         this.fecnac=fecha_nacimiento;
+    };imprimir_persona(){
+        document.write('Nombre: ', this.nombre,' apellidos: ',this.apellidos,' dni: ',this.dni,' fecha de nacimiento: ', this.fecnac)
     }
 }
