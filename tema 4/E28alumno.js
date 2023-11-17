@@ -46,3 +46,4 @@ class Alumno extends Persona{
     };imprimir_alumno(){
         document.write(document.write('Nombre: ', this.nombre,' apellidos: ',this.apellidos,' dni: ',this.dni,' fecha de nacimiento: ', this.fecnac, 'curso: ', this.curso,'nota media: ' ))
     }
+}
