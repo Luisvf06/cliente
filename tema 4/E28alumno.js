@@ -7,7 +7,8 @@ class Alumno extends Persona{
         this.fecha_nacimiento=fecha_nacimiento;
         this.curso=curso;
         this.notas=notas;//dicionario de array
-    };obtener_notas(){
+    };
+    obtener_notas(){
         var contador=[];
         var suma=0;
         for(let [modulo,notas]of this.notas){
@@ -18,15 +19,18 @@ class Alumno extends Persona{
                     contador.push(suma);
                 }
             }
-        };return contador;
-    }calcular_media(contador){
+        };document.write(contador);
+        return contador;
+    };
+    calcular_media(contador){
         var media=0;
         for(var i=0;i<contador.length;i++){
             media+=contador[i];
             if(i+1==contador.length){
-                media/=media/contador.length;
+                media/=contador.length;
             }
-        }return media
+        }document.write(media);
+        return media
     };encontrar_mejor_nota(){
         var mejor=[];
         var mapa=new Map();

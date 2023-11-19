@@ -1,0 +1,5 @@
+p1= new Persona('Luis','vaz','01234q','1994-06-03')
+p2=new Persona('a','asf','54321q','2010-12-12')
+p1.imprimir_persona()
+a1=new Alumno('Paco','g','123456e','2010-10-12','1',('daw',[4,3,6],'diw',[3,6,7]))
+a1.obtener_notas()
