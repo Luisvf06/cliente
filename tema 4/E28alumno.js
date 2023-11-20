@@ -6,14 +6,24 @@ class Alumno extends Persona{
         this.dni=dni;
         this.fecha_nacimiento=fecha_nacimiento;
         this.curso=curso;
-        this.notas=notas;//dicionario de array
+        this.notas=notas;//map de array
+    };imprimir_alumno(){
+        document.write(document.write('Nombre: ', this.nombre,' apellidos: ',this.apellidos,' dni: ',this.dni,' fecha de nacimiento: ', this.fecnac, 'curso: ', this.curso,'notas: ',this.notas ))
     };
+
     obtener_notas(){
         var contador=[];
         var suma=0;
-        for(let [modulo,notas]of this.notas){
-            for(let i=0;i<notas.length;i++){
-                suma+=notas[i];
+        for (let key in this.notas){
+            document.write(this.notas[key].values())
+        }
+    }
+}
+/*        
+        for(let [modulo,nota]of this.notas){
+            
+            for(let i=0;i<nota.length;i++){
+                suma+=nota[i];
                 if(i+1==notas.length){
                     suma=suma/notas.length;//esto es la nota media de cada asignatura despues de haber sumado todas las notas individuales
                     contador.push(suma);
@@ -22,6 +32,16 @@ class Alumno extends Persona{
         };document.write(contador);
         return contador;
     };
+    
+        for (let valor of this.notas.values()){
+            for(let i=0;i<this.notas.values().length;i++){
+                document.write(this.notas.keys, this.notas.values()[i])
+        this.notas.forEach(function(clave,valor){
+            for (let nota=0;nota<valor.length;nota++){
+                document.write(nota)
+            }document.write(valor)
+        })        
+        };
     calcular_media(contador){
         var media=0;
         for(var i=0;i<contador.length;i++){
@@ -45,9 +65,5 @@ class Alumno extends Persona{
             for (let[modulo,notas]of mapaordenado){
                 while(mapaordenado.has(mapaordenado)){}
             };
-
         
-    };imprimir_alumno(){
-        document.write(document.write('Nombre: ', this.nombre,' apellidos: ',this.apellidos,' dni: ',this.dni,' fecha de nacimiento: ', this.fecnac, 'curso: ', this.curso,'nota media: ' ))
-    }
-}
+    };*/
