@@ -22,10 +22,11 @@ class Alumno extends Persona{
         var media= suma /listaNotas.length
         console.log('media', media)
         return media;*/
+        var sumaTotal=0;
         for (let[asignatura,notas] of this.notas){
             var sumaParcial=0;
             var i =0;
-            var sumaTotal=0;
+        
             for (let nota of notas){
                 sumaParcial+=nota
                 document.write('suma parcial',sumaParcial,'<br>')
@@ -33,8 +34,26 @@ class Alumno extends Persona{
                 if(i==notas.length){
                     sumaParcial=sumaParcial/notas.length
                 }
-                    }document.write(sumaParcial)
-                }
-                
             }
+            sumaTotal+=sumaParcial
+        }
+        sumaTotal/=this.notas.size;
+        document.write('<br>',sumaTotal)
+    };
+    obtenerMejorNota(){
+        var registros=new Map();
+        var mejor=0;
+        for (let [asignatura,notas] of this.notas){
+            for (let nota of notas){
+                if (nota>mejor){
+                    mejor=nota;
+                    registros.set(asignatura,mejor)
+                }
+            }
+        }for(let [asig,notaa]of registros){
+            document.write(`<br>${asig}: ${notaa}`);//ahora tengo un mapa con la nota mas alta de cada asignatura, quiero la nota mas alta en total y las asignaturas en las que esté
+        }
+        var mejorTotal=0;
+        var arrayRegistro=[...registros].sort();
+    }
 };

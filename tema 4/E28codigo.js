@@ -7,4 +7,4 @@ notas.set('diw',[3,6,7])
 a1=new Alumno('Paco','g','123456e','06/03/1994','1',notas)
 a1.imprimir_alumno();
 a1.calcularMedia();
-
+a1.obtenerMejorNota();
