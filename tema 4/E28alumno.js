@@ -26,8 +26,7 @@ class Alumno extends Persona{
         for (let[asignatura,notas] of this.notas){
             var sumaParcial=0;
             var i =0;
-        
-            for (let nota of notas){
+            for (let nota of notas){//para cada asignatura sumo las notas que tiene y al final le hago la media
                 sumaParcial+=nota
                 document.write('suma parcial',sumaParcial,'<br>')
                 i+=1;
@@ -35,25 +34,37 @@ class Alumno extends Persona{
                     sumaParcial=sumaParcial/notas.length
                 }
             }
-            sumaTotal+=sumaParcial
+            sumaTotal+=sumaParcial//aqui sumo la media de todas las asignaturas
         }
-        sumaTotal/=this.notas.size;
-        document.write('<br>',sumaTotal)
+        sumaTotal/=this.notas.size;//aqui hago la media de la suma de las medias
+        document.write('<br>','media del alumno: ',sumaTotal)
     };
     obtenerMejorNota(){
         var registros=new Map();
         var mejor=0;
         for (let [asignatura,notas] of this.notas){
             for (let nota of notas){
-                if (nota>mejor){
+                if (nota>=mejor){
                     mejor=nota;
-                    registros.set(asignatura,mejor)
+                    registros.set(asignatura,mejor)//añado la mejor nota de cada asignatura a un nuevo mapa
                 }
             }
-        }for(let [asig,notaa]of registros){
-            document.write(`<br>${asig}: ${notaa}`);//ahora tengo un mapa con la nota mas alta de cada asignatura, quiero la nota mas alta en total y las asignaturas en las que esté
+        };
+        for(let [asig,notaa]of registros){
+            //document.write(`<br>${asig}: ${notaa}`);ahora tengo un mapa con la nota mas alta de cada asignatura, quiero la nota mas alta en total y las asignaturas en las que esté
         }
-        var mejorTotal=0;
-        var arrayRegistro=[...registros].sort();
+        var arrayOrdenado=new Array()
+        var arrayRegistro=[...registros];
+        arrayOrdenado=arrayRegistro.sort((a,b)=>b[1]-a[1]);//ordeno de forma descendente para obtener la asignatura y la nota mas alta como primeros valores
+        var mejorTotal=arrayOrdenado[0][1];//nota mas alta, la uso para comprobar si hay otras en el array de arrays
+        const mapaOrdenado=new Map(arrayOrdenado);
+        var mejoresAsignaturas= new Array()
+        for (let subarray of arrayOrdenado){
+            if(subarray[1]===mejorTotal){
+                mejoresAsignaturas.push(subarray[0])
+                
+            }
+        }document.write('<br>Mejor nota:',mejorTotal,'<br>Asignaturas con la mejor nota ',mejoresAsignaturas)
+        }
     }
-};
+;
