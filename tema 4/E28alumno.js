@@ -22,35 +22,19 @@ class Alumno extends Persona{
         var media= suma /listaNotas.length
         console.log('media', media)
         return media;*/
-        for (var[asignatura,notas] of this.notas){
+        for (let[asignatura,notas] of this.notas){
             var sumaParcial=0;
             var i =0;
             var sumaTotal=0;
             for (let nota of notas){
                 sumaParcial+=nota
+                document.write('suma parcial',sumaParcial,'<br>')
                 i+=1;
                 if(i==notas.length){
-                    sumaParcial/=notas.length
-                }document.write(sumaParcial)
-                    }
+                    sumaParcial=sumaParcial/notas.length
+                }
+                    }document.write(sumaParcial)
                 }
                 
             }
-        
-    
-
-    // Función para calcular la media total de todas las asignaturas
-    calcularMediaTotal() {
-        let sumaTotal = 0;
-        let totalNotas = 0;
-
-        for (const [asignatura, notasAsignatura] of this.notas.entries()) {
-            const mediaAsignatura = this.calcularMedia();
-
-            sumaTotal += mediaAsignatura * notasAsignatura.length;  // Sumar la suma ponderada
-            totalNotas += notasAsignatura.length;  // Sumar el total de notas
-        }
-        document.write(sumaTotal/totalNotas);
-        return sumaTotal / totalNotas;
-    }
 };
