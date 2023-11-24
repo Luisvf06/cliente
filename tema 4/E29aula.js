@@ -14,8 +14,11 @@ class Aula{
     ordenarNota(dni) {
         // Buscar al alumno por DNI
         const alumno = this.buscarDni(dni);
-    
-        var notasOrdenadas = alumno.notas[1].sort((a, b) => a - b);
+        for (let alumno of this.alumnos){
+            var notasOrdenadas = alumno.notas[1].sort((a, b) => a - b);
+            console.log(notasOrdenadas)
+        }
+        
         
             // Imprimir las notas ordenadas (puedes ajustar esto según tus necesidades)
             document.write(notasOrdenadas + "<br>");
@@ -27,10 +30,7 @@ class Aula{
     alumnosOrdenados = this.alumnos.sort((a, b) => {
 a[1].apellido-b[1].apellido
     });
-
     console.log(alumnosOrdenados);
-
-    
         }
     
     imprimirAlumnos(){
