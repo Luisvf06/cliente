@@ -7,12 +7,12 @@ class Alumno extends Persona{
         this.fecha_nacimiento=fecha_nacimiento;//no sé por que si quito los this.atrb que ya están en super, tengo problemas con la fecha de nacimiento
         this.curso=curso;
         this.notas=notas;//map de array
-    };imprimir_alumno(){
+    };
+    imprimir_alumno(){
         
         document.write("Nombre: " + this.nombre + "<br>","Apellidos: " + this.apellidos + "<br>","DNI: " + this.dni + "<br>","Fecha de Nacimiento: " + this.fecha_nacimiento + "<br>","Curso: " + this.curso + "<br>","Notas:<br>");
-        for (const asignatura in this.notas) {
-            const notasAsignatura = this.notas[asignatura];
-            document.write("  " + asignatura + ": " + notasAsignatura.join(", ") + "<br>");
+        for (const asignatura of this.notas) {
+            document.write("  " + asignatura, "<br>");
         }
     };
     calcularMedia() {
