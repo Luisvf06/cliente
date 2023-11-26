@@ -1,0 +1,8 @@
+b1= new Banco('BBVA',['sevilla','Cadiz'])
+b1.agregarRama('Malaga')
+b1.imprimirBanco()
+b1.ordenarRama()
+b1.imprimirBanco()
+b1.eliminarRama('Malaga')
+b1.imprimirBanco()
+document.write(b1.filtrarRama())
