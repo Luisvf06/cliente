@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="estiloE1.css" rel="stylesheet">
+    <script type="text/javascript" src="E1.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -16,13 +18,16 @@
             <input type="text"id="usuario"name="usuario"required minlength="5"maxlength="20"pattern="\w{5,20}"/>
 
         <label class="d-block" for="contra">Contraseña</label>
-            <input type="password"required minlength="8"maxlength="20"pattern="\w\d{8,20}" id="contra">
+            <input type="password"name="contraseña"required minlength="8"maxlength="20"pattern="^[a-zA-Z\d]{8,20}$"
+            id="contra">
 
         <label class="d-block" for="fecnac">Fecha de nacimiento</label>
-            <input id="dia" name="fecnac" type="text" min="1" max="31" required>
-            <input id="mes" name="fecnac" type="text" min="1" max="12" required>
-            <input id="ano" name="fecnac" type="text" min="1900" max="2023" required>
-        
+            <input id="dia" name="dia" type="text" pattern="[1-9]|[12][0-9]|3[01]" required>
+            <input id="mes" name="mes" type="text" pattern="[1-9]|[1][0-2]" required>
+            <input id="ano" name="año" type="text" pattern="19\d\d|20[0-1]\d|202[0-3]" required>
+        <label for="edad">Edad</label>
+        <input type="text"name="edad"id="edad"disabled placeholder="Edad">
+        <input type="button"id="boton2">
 
         <label class="d-block">Sexo</label>
             <select name="sexo">
@@ -30,9 +35,9 @@
                 <option value="mujer">Mujer</option>
             </select>
         <label class="d-block" id="telefono">Teléfono movil</label>
-        <input type="tlf" id="telefono" name="telefono" required>
+        <input type="tel" id="telefono" name="telefono"pattern="^\+346\d{8}$" required>
         <label class="d-block" for="correo">Correo electronico</label>
-        <input type="email"id="correo" name="email"required>
+        <input type="email" id="correo" name="email"required>
         <label for="ubicacion">Ubicación</label>
         <input type="button" id="boton"/>
     </form>
