@@ -25,16 +25,16 @@
             <input id="dia" name="dia" type="text" pattern="[1-9]|[12][0-9]|3[01]" required>
             <input id="mes" name="mes" type="text" pattern="[1-9]|[1][0-2]" required>
             <input id="ano" name="año" type="text" pattern="19\d\d|20[0-1]\d|202[0-3]" required>
-        <label for="edad">Edad</label>
-        <input type="text"name="edad"id="edad"disabled placeholder="Edad">
-        <input type="button"id="boton2">
+        <label for="edad1">Edad</label>
+        <input type="text"name="edad"id="edad1"disabled placeholder="Edad">
+
 
         <label class="d-block">Sexo</label>
             <select name="sexo">
                 <option value="hombre">Hombre</option>
                 <option value="mujer">Mujer</option>
             </select>
-        <label class="d-block" id="telefono">Teléfono movil</label>
+        <label class="d-block" for="telefono">Teléfono movil</label>
         <input type="tel" id="telefono" name="telefono"pattern="^\+346\d{8}$" required>
         <label class="d-block" for="correo">Correo electronico</label>
         <input type="email" id="correo" name="email"required>

@@ -36,15 +36,20 @@ function inicializar(){
     //ejercicio3 añadir edad despues de fecnac y que no se pueda editar
     function calcularEdad(){
         var hoy= new Date();
-        var diaC= document.getElementById('dia').value;
+        var diaC= document.getElementById('dia').value;//cojo el valor de dia mes y año
         var mesC=document.getElementById('mes').value;
-        var anhoC=document.getElementById('año').value;
+        var anhoC=document.getElementById('ano').value;
         
-        var cumple= new Date(anhoC,mesC-1,diaC);
+        var cumple= new Date(anhoC,mesC-1,diaC);//con los valores cogidos creo un objeto fecha
         var edadMs=hoy-cumple;
-        var edad=Math.floor(edadMs/365*24*60*60*1000)
-        document.getElementById('edad').value = edad;
+        var edad=Math.floor(edadMs/(365*24*60*60*1000));
+        document.getElementById('edad1').value = edad;
     }
-    var boton2=document.getElementById('boton2');
-    boton2.addEventListener('click',calcularEdad)
+    var salidaAnho=document.getElementById('ano');
+    salidaAnho.addEventListener('blur',calcularEdad)
+    document.getElementById('edad').innerHTML=calcularEdad
 }
+
+//stoppropagation-->para propagacion evento
+//preventdefault -->no hace la accion por defecto
+
