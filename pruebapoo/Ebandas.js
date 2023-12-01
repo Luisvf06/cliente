@@ -5,7 +5,7 @@ class Bandas{
     añadirBanda(n){
         var coincidenciaNombre=false
         for(let banda of this.bandas){
-            if(banda[0].includes(n.nombre)){
+            if(banda.nombre.includes(n.nombre)){
                 coincidenciaNombre=true;
                 break
             }
@@ -16,24 +16,24 @@ class Bandas{
     }
     imprimirListadoBandas(){
         for(let banda of this.bandas){
-            document.write('Nombre: ',banda.nombre,'Año de formación: ', banda.formacion,'Telefono: ',banda.telefono,' Estilo: ',banda.estilo,' Integrantes: ')
-            for(let integrantes of this.bandas.integrantes){
-                document.write('Nombre: ',integrantes.nombre,' Apellido: ',integrantes.apellido,' DNI: ',integrantes.dni)
+            document.write('Nombre: ',banda.nombre,'<br>Año de formación: ', banda.formacion,'<br>Telefono: ',banda.telefono,'<br>Estilo: ',banda.estilo,'<br>Integrantes: ')
+            for(let integrantes of banda.integrantes){
+                document.write('<br>Nombre: ',integrantes.nombre,'<br>Apellido: ',integrantes.apellido,'<br>DNI: ',integrantes.dni)
             }
         }
     }
     buscarBandaPorNombre(nombre){
-        var banda= this.bandas.find((band)=>band.nombre==nombre)
+        var banda= this.bandas.find((band)=>band.nombre===nombre)
         return banda
     }
     buscarBandasPorEstilo(estilo){
-        var banda= this.bandas.filter((band)=>band.estilo=estilo)
+        var banda= this.bandas.filter((band)=>band.estilo===estilo)
         return banda
     }
     ordenarBandasPorAño(){
         this.bandas.sort((a,b,)=>{
-            const añoA=new Date(a.creacion).getFullYear();
-            const añoB=new Date(b.creacion).getFullYear();
+            const añoA=new Date(a.formacion).getFullYear();
+            const añoB=new Date(b.formacion).getFullYear();
             return añoA-añoB
             //para ordenar de forma normal seria this.bandas.sort((a,b)=>a.creacion-b.creacion)
         })
