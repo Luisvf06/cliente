@@ -26,7 +26,11 @@ function inicializar(){
         }
     }
     function enviar(){
-        pass
+        var formulario =document.getElementById('formulario');
+        for(let i=0;i<formulario.elements.length;i++){
+            var elemento=formulario.elements[i].value;
+            //no sé hacer el envio
+        }
         //no sé hacer esta parte
     }
     var boton=document.getElementById('boton')

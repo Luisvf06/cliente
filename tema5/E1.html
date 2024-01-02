@@ -6,28 +6,37 @@
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="estiloE1.css" rel="stylesheet">
     <script type="text/javascript" src="E1.js"></script>
-    <title>Document</title>
+    <script type="text/javascript" src="E8.js"></script>
+
+    <title>Plantilla E1</title>
 </head>
 <body>
     <form class="container" id="formulario">
         <label class="d-block">Nombre</label>
             <input type="text"id="nombre"name="nombre"placeholder="Nombre"required minlength="3"maxlength="40"pattern="\w{3,40}"/>
+            <span class="mensajeError" id="nombreError"></span>
             <input type="text"name="apellido"id="apellido"placeholder="Apellidos"required minlength="3"maxlength="60"pattern="\w{3,60}"/>
+            <span class="mensajeError" id="apellidoError"></span>
         
         <label class="d-block"for="usuario">Nombre de usuario</label>
             <input type="text"id="usuario"name="usuario"required minlength="5"maxlength="20"pattern="\w{5,20}"/>
+            <span class="mensajeError" id="usuarioError"></span>
 
         <label class="d-block" for="contra">Contraseña</label>
             <input type="password"name="contraseña"required minlength="8"maxlength="20"pattern="^[a-zA-Z\d]{8,20}$"
             id="contra">
+            <span class="mensajeError" id="contrasenaError"></span>
 
         <label class="d-block" for="fecnac">Fecha de nacimiento</label>
             <input id="dia" name="dia" type="text" pattern="[1-9]|[12][0-9]|3[01]" required>
+            <span class="mensajeError" id="diaError"></span>
             <input id="mes" name="mes" type="text" pattern="[1-9]|[1][0-2]" required>
+            <span class="mensajeError" id="mesError"></span>
             <input id="ano" name="año" type="text" pattern="19\d\d|20[0-1]\d|202[0-3]" required>
+            <span class="mensajeError" id="anoError"></span>
         <label for="edad1">Edad</label>
         <input type="text"name="edad"id="edad1"disabled placeholder="Edad">
-
+        
 
         <label class="d-block">Sexo</label>
             <select name="sexo">
@@ -36,10 +45,13 @@
             </select>
         <label class="d-block" for="telefono">Teléfono movil</label>
         <input type="tel" id="telefono" name="telefono"pattern="^\+346\d{8}$" required>
+        <span class="mensajeError" id="telefonoError"></span>
         <label class="d-block" for="correo">Correo electronico</label>
         <input type="email" id="correo" name="email"required>
+        <span class="mensajeError" id="emailError"></span>
         <label for="ubicacion">Ubicación</label>
         <input type="button" id="boton"/>
+        <input type="button"id="botonEnvio" value="enviar"/>
     </form>
     <script src="bootstrap.min.js" ></script>
 </body>
