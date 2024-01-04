@@ -13,20 +13,23 @@ function inicializar() {
     // Declarar la función fuera de la función inicializar
     function comprobarTexto() {
         for (let elemento of elementos) {
-            if (elemento.tagName === 'INPUT') {
-                if (elemento.value === "") {
-                    elemento.addEventListener('blur', devolver);
-                }
+            if (elemento.tagName === 'INPUT' && elemento.value==="") {
+                elemento.addEventListener('blur', devolver);
+                
             }
+            
         }
     }
 
     // Función manejadora de eventos
     function devolver() {
-        alert('El campo no puede estar vacío');
+        
         this.focus();
+        
+        alert('El campo no puede estar vacío');
+
         // Remover el event listener después de ejecutarlo
-        this.removeEventListener('blur', comprobarTexto);
+        this.removeEventListener('blur', devolver);
     }
 
     for (let elemento of elementos) {
