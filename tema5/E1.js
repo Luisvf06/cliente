@@ -28,7 +28,7 @@ function inicializar(){
         // Itero sobre los elementos del formulario
         for (var i = 0; i < formulario.elements.length; i++) {
             var elemento = formulario.elements[i];
-            // Verificar si el elemento es un campo de entrada y no es de tipo "button"
+            // Verificar si el elemento es un campo de entrada y no un boton
             if (elemento.tagName === 'INPUT' && elemento.type !== 'button') {
                 // convierto a mayuscula En este caso se usa .value y no .innerText porque es un formulario y no un dato recogido en html como un p o span
                 mensaje += elemento.name + ': ' + elemento.value.toUpperCase() + '\n';//.name hace referencia al atributo name
