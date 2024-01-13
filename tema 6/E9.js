@@ -1,21 +1,6 @@
-/*Crear mediante DOM y a partir del siguiente array de objetos expresado en formato JSON:*/
-/*<ul>
-
-<li>
-<img src="/img/img1.jpg" />
-<p> descripcion1 </p>
-<ul class="specs">
-<li>spec1</li>
-<li>spec2</li>
-...
-			</ul>
-		</li>
-
-		<li>
-		…
-		</li>
-</ul>
-*/
+/*Añade un evento al ejercicio anterior en el que si se hace click en la imagen se oculta
+toda la información relacionada con esa imagen, al hacer clic de nuevo en la imagen volverá a
+aparecer toda la información anteriormente ocultada.*/
 window.addEventListener('load',inicializar);
 function inicializar(){
     var json = [
@@ -50,5 +35,23 @@ function inicializar(){
         }
         
     }
-    
+
+    function mostrarOcultar(){
+        for(let foto of document.getElementsByTagName('img')){
+            foto.addEventListener('click',function(){
+                var parrafo=this.nextElementSibling;
+                var sublista=parrafo.nextElementSibling;
+                if(parrafo.style.visibility!=='hidden'&&sublista.style.visibility!=='hidden'){
+                    parrafo.style.visibility='hidden';
+                    sublista.style.visibility='hidden';
+
+                }else{
+                    parrafo.style.visibility='visible';
+                    sublista.style.visibility='visible'
+                }
+            })
+
+        }
+    }
+    mostrarOcultar()
 }
