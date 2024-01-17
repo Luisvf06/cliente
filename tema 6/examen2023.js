@@ -22,7 +22,6 @@ function crearTodo(){
     foto.setAttribute('src','./imagenes/mostrar.png')
     foto.setAttribute('name','mostrar')
     foto.style.width='30px'
-    var salto=document.createElement('br')
     var notici=document.createElement('h4')
     notici.style.display='none'
 
@@ -31,7 +30,6 @@ function crearTodo(){
     subdivisor.appendChild(titular)
     subdivisor.appendChild(parrafo)
     subdivisor.appendChild(foto)
-    subdivisor.appendChild(salto)
     subdivisor.appendChild(notici)
     divisor.appendChild(subdivisor)
     contador++
@@ -46,8 +44,8 @@ function evento(){
             var hermano2=hermano.nextElementSibling;
             if(foto.getAttribute('name')==='mostrar'){
                 
-                hermano.style.display='inline-block'
-                hermano2.style.display='inline-block'
+                hermano.style.display='block'
+ 
                 foto.setAttribute('name','ocultar')
                 foto.setAttribute('src','./imagenes/ocultar.webp')
             }else{hermano.style.display='none'
