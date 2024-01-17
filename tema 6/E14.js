@@ -2,69 +2,70 @@
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event
 */
 
+function crearElementoMovil(text) {
+    var div = document.createElement('div');
+    div.className = 'draggable';
+    div.setAttribute('draggable','true')//para que un elemento sea arrastrable necesita el atributo draggable
+    
 
-function crearElemento(){
-    var div1 = document.createElement('div');
-div1.setAttribute('id', 'div1');
-div1.setAttribute('draggable','true')
-var div2 = document.createElement('div');
-div2.setAttribute('id', 'div2');
-div2.setAttribute('draggable','true')
-var p1 = document.createElement('p');
-var p2 = document.createElement('p');
-var texto = document.createTextNode('parrafo1');
-p1.appendChild(texto);
+    var p = document.createElement('p');
+    p.textContent = text;
 
-
-var texto2 = document.createTextNode('parrafo2');
-p2.appendChild(texto2);
-
-div2.appendChild(p1);
-div2.appendChild(p2);
-
-var div3 = document.createElement('div');
-div3.setAttribute('id', 'div3');
-var p3=document.createElement('p')
-var texto3 = document.createTextNode('parrafo3 ');
-p3.appendChild(texto3);
-div3.appendChild(p3)
-div3.setAttribute('draggable','true')
-var div4 = document.createElement('div');
-div4.setAttribute('id', 'div4');
-var p4=document.createElement('p')
-var texto4 = document.createTextNode('parrafo4');
-p4.appendChild(texto4);
-div4.appendChild(p4)
-div4.setAttribute('draggable','true')
-var body = document.getElementsByTagName('body')[0]; 
-body.appendChild(div1);
-body.appendChild(div2);
-body.appendChild(div3);
-body.appendChild(div4);
-
-
-var papelera= document.createElement('span')
-var textoPapelera=document.createTextNode('<i class="fa-solid fa-trash"></i>')
-papelera.appendChild(textoPapelera)
-body.appendChild(papelera)
-}
-var boton=document.getElementsByTagName('input')[0]
-boton.addEventListener('click',crearElemento)
-function borrar(){
-    for (let elemento of document.body.elements){
-        if (elemento.getElementsByTagName() !=='i' ){
-            elemento.preventDefault()
-            if (elemento.pageX=== papelera.pageX &&elemento.pageY===papelera.pageY){
-                elemento.remove()
-            }
-        }
-    }
+    div.appendChild(p);
+    return div;
 }
 
-function arrastrar(){
-    for (let elemento of document.body){
-        elemento.preventDefault()
-        elemento.addEventListener('drop',borrar)
-    }
+function crearPapelera() {
+    var basura = document.createElement('div');
+    basura.id = 'basura';
+    basura.className = 'basura';
+
+    var i = document.createElement('i');
+    i.className = 'fas fa-trash';
+
+    basura.appendChild(i);
+    return basura;
 }
-arrastrar()
+
+function establecerMovimiento(element) {//oye el evento dragstart
+    element.addEventListener('dragstart', function (e) {
+        e.dataTransfer.setData('text/plain', 'anything'); // sin esto no funciona en firefox
+        this.classList.add('dragging');
+    });
+
+    element.addEventListener('dragend', function () {
+        this.classList.remove('dragging');
+    });
+}
+
+var contenedor = document.createElement('div');
+contenedor.className = 'contenedor';
+
+var div1 = crearElementoMovil('Parrafo 1');
+var div2 = crearElementoMovil('Parrafo 2');
+var div3 = crearElementoMovil('Parrafo 3');
+var div4 = crearElementoMovil('Parrafo 4');
+
+establecerMovimiento(div1);
+establecerMovimiento(div2);
+establecerMovimiento(div3);
+establecerMovimiento(div4);
+
+contenedor.appendChild(div1);
+contenedor.appendChild(div2);
+contenedor.appendChild(div3);
+contenedor.appendChild(div4);
+
+var basura = crearPapelera();
+
+basura.addEventListener('dragover', function (e) {//se activa cuando algo es arrastrado encima del elemento basura
+    e.preventDefault();//evita que el elemento arrastrado vuelva a su posicion
+});
+
+basura.addEventListener('drop', function (e) {
+    var elementoMovil = document.querySelector('.dragging');
+    elementoMovil.parentNode.removeChild(elementoMovil);
+});
+
+document.body.appendChild(contenedor);
+document.body.appendChild(basura);
