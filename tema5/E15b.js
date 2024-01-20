@@ -2,16 +2,16 @@
 próxima vez que el usuario acceda a la página, se rellenará la dirección
 utilizando el valor de la cookie.*/
 function guardarDireccion(){
-    const correo={
+    const correo={//creo el objeto conrreo
         direccion:document.getElementById('texto').value
     }
-    localStorage.setItem('correo',JSON.stringify(correo));
+    localStorage.setItem('correo',JSON.stringify(correo));//almaceno el objeto convertido en formato json
 }
 
 function rellenarCampo() {
     const correo = localStorage.getItem('correo');
     if (correo) {
-        const direccion = JSON.parse(correo).direccion; // Obtén la dirección directamente
+        const direccion = JSON.parse(correo).direccion; // coge el json y lo convierte en un objeto de js
         var entrada = document.getElementsByTagName('input')[0];
         entrada.value = direccion; // Establece el valor del campo de entrada
     }

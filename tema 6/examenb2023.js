@@ -5,6 +5,11 @@ var entrada=document.createElement('input')
 entrada.setAttribute('type','text')
 formulario.appendChild(entrada)
 var boton=document.createElement('input')
+var linea=document.createElement('p')
+formulario.appendChild(linea)
+var textoLinea=document.createTextNode('Código incorrecto')
+linea.appendChild(textoLinea)
+linea.style.display='none'
 boton.setAttribute('type','button')
 boton.setAttribute('value','Enviar')
 formulario.appendChild(boton)
@@ -14,10 +19,11 @@ function recogerDato() {
     if (regu.test(entrada.value)) {
         return entrada.value;
     } else {
-        alert('El código introducido no es válido');
-        return null; // Devolvemos null si el código no es válido
+        linea.style.display='inline-block'
+        return null; 
     }
 }
+entrada.addEventListener('blur',recogerDato)
 function crearCookie(){
     var codigo = recogerDato();
             if (codigo !== null) {
@@ -26,3 +32,23 @@ function crearCookie(){
             }
         }
         boton.addEventListener('click',crearCookie)
+
+        function guardarDatos() {
+            var codigoFormulario = {
+                codigo: entrada.value
+            };
+            localStorage.setItem('codigoFormulario', JSON.stringify(codigoFormulario));
+        }
+        
+        function cargarDatos() {
+            const datos = localStorage.getItem('codigoFormulario');
+            if (datos) {
+                const datosParseados = JSON.parse(datos);
+                var entrada = document.getElementsByTagName('input')[0];
+                entrada.value = datosParseados.codigo;
+            }
+        }
+        
+        boton.addEventListener('click', guardarDatos);
+        
+        cargarDatos();

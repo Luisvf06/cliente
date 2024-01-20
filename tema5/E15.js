@@ -7,7 +7,7 @@ boton.addEventListener('click',guardarDireccion)
 
 function guardarDireccion(){
     direccionUsu={direccion:direccionDato.value};
-    localStorage.setItem('direccion',JSON.stringify(direccionUsu))
+    localStorage.setItem('direccion',JSON.stringify(direccionUsu))//almaceno el objeto convertido en formato json
 }
 
 
@@ -15,7 +15,7 @@ function guardarDireccion(){
 window.addEventListener('load',()=>{
     const direccionUsu=localStorage.getItem('direccion')
     if(direccionUsu){
-        const objetoDireccion=JSON.parse(direccionUsu);
+        const objetoDireccion=JSON.parse(direccionUsu);// coge el json y lo convierte en un objeto de js
         direccionDato.value=objetoDireccion.direccion
     }
 })
