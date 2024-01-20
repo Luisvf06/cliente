@@ -6,12 +6,14 @@ function inicializar(){
     function borrar(){
         var borrado= confirmar()
         if (borrado===true){
+            /*
             for (let element of formulario.elements){
                 if( element.type !== 'button'){
                     element.value=""
                 }
                 
-            }
+            }*/
+            formulario.reset()
         }
     }
     function confirmar(){
