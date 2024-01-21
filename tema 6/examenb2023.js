@@ -28,6 +28,7 @@ function crearCookie(){
     var codigo = recogerDato();
             if (codigo !== null) {
                 document.cookie = 'codigo=' + codigo;
+                formulario.submit()
                 alert('Código almacenado con éxito: ' + codigo);
             }
         }

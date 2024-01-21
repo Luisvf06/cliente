@@ -22,18 +22,13 @@ function inicializar(){
             mensajeError.appendChild(document.createTextNode('El nombre debe estar en mayúsculas'));
         } else {
 
-            document.getElementById('boton').addEventListener('click', enviar);
+            formulario.submit()
         }
     }
-    function enviar(){
-        var formulario =document.getElementById('formulario');
-        for(let i=0;i<formulario.elements.length;i++){
-            var elemento=formulario.elements[i].value;
-            //no sé hacer el envio
-        }
-        //no sé hacer esta parte
-    }
-    var boton=document.getElementById('boton')
+
+
+            var boton=document.getElementById('boton')
     boton.addEventListener('click',validar)
+    }
+
     
-}
