@@ -38,8 +38,8 @@ function inicializar(){
 
     function mostrarOcultar(){
         for(let foto of document.getElementsByTagName('img')){
-            foto.addEventListener('click',function(){
-                var parrafo=this.nextElementSibling;
+            foto.addEventListener('click',function(){//cuando hagan click en la foto
+                var parrafo=this.nextElementSibling;//this es el elemento foto
                 var sublista=parrafo.nextElementSibling;
                 if(parrafo.style.visibility!=='hidden'&&sublista.style.visibility!=='hidden'){
                     parrafo.style.visibility='hidden';

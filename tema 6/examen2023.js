@@ -34,19 +34,18 @@ function crearTodo(){
     divisor.appendChild(subdivisor)
     contador++
     }
-    evento()
+    evento()//aqui llamo a la funcion que actua con el click en la foto
 }
 
 function evento(){
-    for(let foto of document.getElementsByTagName('img')){
+    for(let foto of document.getElementsByTagName('img')){//por cada elemento foto
         foto.addEventListener('click',function(){
-            var hermano=foto.nextElementSibling;
-            var hermano2=hermano.nextElementSibling;
-            if(foto.getAttribute('name')==='mostrar'){
+            var hermano=foto.nextElementSibling;//vuelco en una variable al hermano de la foto
+            if(foto.getAttribute('name')==='mostrar'){//si el atributo name del elemento foto tiene valor mostrar
                 
-                hermano.style.display='block'
+                hermano.style.display='block'//se muestra el elemento h4
  
-                foto.setAttribute('name','ocultar')
+                foto.setAttribute('name','ocultar')//se cambia la foto
                 foto.setAttribute('src','./imagenes/ocultar.webp')
             }else{hermano.style.display='none'
                     foto.setAttribute('name','mostrar')
