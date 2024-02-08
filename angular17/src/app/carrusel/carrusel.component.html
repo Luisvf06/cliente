@@ -1,0 +1,7 @@
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let movie of movies; let index = index" [ngClass]="{'carousel-item': true, 'active': index === 0 }" data-bs-interval="4000">
+        <img [src]="getMovieImageUrl(movie.backdrop_path)" class="d-block w-100" alt="Movie Poster">
+      </div>
+    </div>
+  </div>
