@@ -31,6 +31,12 @@ export class CarruselComponent implements OnInit {
           console.error('Error al obtener las películas', error);
         }
       );
+      /*next: (result: any) => {
+        this.movies = result.slice(0, 3);
+      },
+      error: (e: any) => {
+        console.error('Error al obtener las películas', e);
+      }*/
   }
 
   getMovieImageUrl(posterPath: string): string {

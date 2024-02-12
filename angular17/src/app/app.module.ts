@@ -9,6 +9,7 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { PeliculasService } from './services/peliculas.service';
 import { CarruselComponent } from './carrusel/carrusel.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     PeliculasComponent,
     CarruselComponent,
     NavbarComponent,
+    WatchlistComponent,
   ],
   imports: [
     BrowserModule,

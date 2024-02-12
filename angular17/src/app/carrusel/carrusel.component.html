@@ -1,7 +1,8 @@
 <!-- carrusel.component.html -->
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div *ngFor="let movie of movies; let index = index" [ngClass]="{'carousel-item': true, 'active': index === 0}" data-interval="4000">
+    <div class="carousel-item active" data-bs-interval="2000" *ngFor="let movie of movies; let index = index" [class.active]="index === index">
+      <!-- Establecemos el alto de la imagen a 400 píxeles -->
       <img [src]="getMovieImageUrl(movie.backdrop_path)" class="d-block w-100" alt="Movie Poster">
     </div>
   </div>
