@@ -1,1 +1,14 @@
 <p>watchlist works!</p>
+<div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let pelicula of peliculas">
+      <div class="card">
+        <img [src]="'https://image.tmdb.org/t/p/w500/'+pelicula.backdrop_path" class="card-img-top" alt="Movie Poster">
+        <div class="card-body">
+          <h5 class="card-title">{{ pelicula.title }}</h5>
+          <p class="card-text">{{ pelicula.overview.substring(0, 200) + '...' }}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  

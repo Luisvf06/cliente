@@ -10,6 +10,7 @@ import { PeliculasService } from './services/peliculas.service';
 import { CarruselComponent } from './carrusel/carrusel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
     CarruselComponent,
     NavbarComponent,
     WatchlistComponent,
+    DetallesComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([]), // Configura correctamente RouterModule
+    RouterModule, // Configura correctamente RouterModule
     AppRoutingModule
   ],
   providers: [PeliculasService],

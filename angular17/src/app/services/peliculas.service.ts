@@ -14,4 +14,8 @@ export class PeliculasService {
   getPeliculas(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+  getPelicula(id:number):Observable<any>{
+    const url = `${this.apiUrl}${id}?api_key=4431fed8390b02d6c28655feb536156a`;
+    return this.http.get<any>(url);
+  }
 }

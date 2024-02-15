@@ -1,4 +1,4 @@
-<!-- peliculas.component.html -->
+<!-- Lista de peliculas de la pagina principal-->
 <div class="row">
   <div class="col-md-4 mb-4" *ngFor="let pelicula of peliculas">
     <div class="card">
@@ -6,6 +6,8 @@
       <div class="card-body">
         <h5 class="card-title">{{ pelicula.title }}</h5>
         <p class="card-text">{{ pelicula.overview.substring(0, 200) + '...' }}</p>
+        <a [routerLink]="['/pelicula', pelicula.id]">Detalles</a>
+        
       </div>
     </div>
   </div>

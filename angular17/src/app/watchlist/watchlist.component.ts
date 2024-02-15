@@ -1,5 +1,5 @@
 import { Component , OnInit} from '@angular/core';
-import { PeliculasService } from '../services/peliculas.service';}
+import { PeliculasService } from '../services/peliculas.service';
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',

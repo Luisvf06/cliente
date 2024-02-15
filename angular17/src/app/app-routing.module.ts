@@ -2,10 +2,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PeliculasComponent } from './peliculas/peliculas.component';
-import { navbar} from './navbar/navbar.component'
+import { DetallesComponent } from './detalles/detalles.component';
+//import { navbar} from './navbar/navbar.component'
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
-  // Agrega más rutas según sea necesario
+  { path: 'pelicula/:id', component:DetallesComponent},
+  
 ];
 
 @NgModule({
