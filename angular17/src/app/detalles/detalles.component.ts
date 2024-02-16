@@ -9,21 +9,26 @@ import { PeliculasService } from '../services/peliculas.service'; // Importa el 
 })
 export class DetallesComponent implements OnInit {
   pelicula: any;
+  public id:Number;
 
   constructor(
     private route: ActivatedRoute,
     private peliculasService: PeliculasService
-  ) { }
+  ) { 
+    this.id = this.route.snapshot.paramMap.get('id');
+
+  }
 
   ngOnInit(): void {
+    console.log("hola")
     this.getPeliculaDetalle();
   }
 
   getPeliculaDetalle(): void {
-    const idString = this.route.snapshot.paramMap.get('id');
-    const id = idString ? +idString : 0; // Si idString es nulo, asigna 0 como valor por defecto
-  
-    this.peliculasService.getPelicula(id).subscribe(
+    // Obtén el ID de la película desde los parámetros de la ruta
+    
+    // Llama al servicio para obtener los detalles de la película por su ID
+    this.peliculasService.getPelicula(Number(this.id)).subscribe(
       (data: any) => {
         this.pelicula = data;
       },
@@ -32,6 +37,4 @@ export class DetallesComponent implements OnInit {
       }
     );
   }
-  
-  
 }

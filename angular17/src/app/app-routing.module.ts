@@ -8,14 +8,15 @@ import { navbar} from './navbar/navbar.component'
 
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
-  { 
+  { path: 'peliculas', component: PeliculasComponent },
+  /*{ 
     path: 'detalles', 
     component: navbar, // Asegúrate de tener un componente para la barra de navegación en la página principal
     children: [
-      { path: 'detalles', component: DetallesComponent },
-      { path: ':id', component: DetallesComponent }
+      { path: 'detalles/:id', component: DetallesComponent }
     ]
-  },
+  },*/
+  { path: '/detalles/:id', component: DetallesComponent },
   // Otras rutas
 ];
 
