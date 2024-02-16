@@ -6,7 +6,8 @@
       <div class="card-body">
         <h5 class="card-title">{{ pelicula.title }}</h5>
         <p class="card-text">{{ pelicula.overview.substring(0, 200) + '...' }}</p>
-        <a [routerLink]="['/pelicula', pelicula.id]">Detalles</a>
+        <a [routerLink]="['/pelicula', pelicula.id]" >Detalles</a>
+
         
       </div>
     </div>

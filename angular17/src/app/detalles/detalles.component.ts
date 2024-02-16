@@ -20,8 +20,9 @@ export class DetallesComponent implements OnInit {
   }
 
   getPeliculaDetalle(): void {
-    const idString = this.route.snapshot.paramMap.get('id'); // Obtiene el id como string
-    const id = idString ? parseInt(idString, 10) : 0; // Convierte el string a number, o asigna 0 si es null
+    const idString = this.route.snapshot.paramMap.get('id');
+    const id = idString ? +idString : 0; // Si idString es nulo, asigna 0 como valor por defecto
+  
     this.peliculasService.getPelicula(id).subscribe(
       (data: any) => {
         this.pelicula = data;
@@ -31,4 +32,6 @@ export class DetallesComponent implements OnInit {
       }
     );
   }
+  
+  
 }
