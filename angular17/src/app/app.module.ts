@@ -9,7 +9,7 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { PeliculasService } from './services/peliculas.service';
 import { CarruselComponent } from './carrusel/carrusel.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { WatchlistComponent } from './watchlist/watchlist.component';
+
 import { DetallesComponent } from './detalles/detalles.component';
 
 @NgModule({
@@ -18,7 +18,6 @@ import { DetallesComponent } from './detalles/detalles.component';
     PeliculasComponent,
     CarruselComponent,
     NavbarComponent,
-    WatchlistComponent,
     DetallesComponent,
   ],
   imports: [

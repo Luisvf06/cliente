@@ -1,39 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { PeliculasService } from '../services/peliculas.service';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http'; // Add this import statement
 import { catchError } from 'rxjs/operators';
-@Component({
-  selector: 'app-peliculas',
-  templateUrl: './peliculas.component.html',
-  styleUrls: ['./peliculas.component.scss']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class PeliculasComponent implements OnInit {
-  peliculas: any[] = [];
+export class PeliculasService {
+  private apiUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=4431fed8390b02d6c28655feb536156a';
 
-  constructor(private peliculasService: PeliculasService) {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.getPeliculas();
+  getPeliculas(): Observable<any> {
+    return this.http.get<any>(this.apiUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  getPeliculas(): void {
-    this.peliculasService.getPeliculas().subscribe(
-      (data: any) => {
-        this.peliculas = data.results;
-      },
-      (error) => {
-        console.error('Error al obtener las películas', error);
-      }
-    );
-  }
-
-  getPeliculaId(index: number): number {
-    if (index >= 0 && index < this.peliculas.length) {
-      return this.peliculas[index].id;
-    } else {
-      return -1; // Devuelve -1 si el índice está fuera de rango
-    }
+  getPelicula(id: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=4431fed8390b02d6c28655feb536156a`;
+    return this.http.get<any>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   getDetallesPelicula(id: number): Observable<any> {
@@ -43,5 +34,23 @@ export class PeliculasComponent implements OnInit {
         catchError(this.handleError)
       );
   }
-  
+
+  private handleError(error: HttpErrorResponse) { // No need to import HttpErrorResponse here
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
+  searchMovies(searchTerm: string): Observable<any> {
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=4431fed8390b02d6c28655feb536156a&query=${searchTerm}`;
+    return this.http.get<any>(searchUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

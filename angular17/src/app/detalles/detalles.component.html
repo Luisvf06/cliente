@@ -1,5 +1,6 @@
 <div *ngIf="pelicula">
     <h2>{{ pelicula.title }}</h2>
+    <p>{{ pelicula.overview }}</p>
     <img [src]="'https://image.tmdb.org/t/p/w500/' + pelicula.backdrop_path" alt="Movie Poster">
     <p>{{ pelicula.overview }}</p>
 </div>
