@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SearchService } from './search.service'; // Importa el servicio
+import { SearchService } from './services/search.service'; // Importa el servicio
 
 @Component({
   selector: 'app-root',
