@@ -9,9 +9,11 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { PeliculasService } from './services/peliculas.service';
 import { CarruselComponent } from './carrusel/carrusel.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { FormsModule} from '@angular/forms';
 import { DetallesComponent } from './detalles/detalles.component';
 import { HomeComponent } from './home/home.component';
+import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     DetallesComponent,
     HomeComponent,
+    MovieSearchComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule, // Configura correctamente RouterModule
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
-  providers: [PeliculasService],
+  providers: [PeliculasService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

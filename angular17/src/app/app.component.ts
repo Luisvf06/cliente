@@ -1,35 +1,33 @@
-// app.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { SearchService } from './search.service'; // Importa el servicio
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'] // Corregir el nombre de la propiedad a styleUrls
+  styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit{
-  searchTerm$ = new Subject<string>();
-  peliculasApi:any[]=[];
-  listaFiltrada: any[]=[];
+export class AppComponent implements OnInit {
+  searchTerm: string = '';
+  peliculasApi: any[] = [];
+  listaFiltrada: any[] = [];
 
-  constructor(private http:HttpClient,private router: Router){}
-  paginaBuscador():boolean{
-    return this.router.url==='/buscador';
-  }
-  ngOnInit():void{
+  constructor(private http: HttpClient, private searchService: SearchService) {} // Inyecta el servicio
+
+  ngOnInit(): void {
     this.getPopularMovies();
-    this.searchTerm$
-    .subscribe(term => {
-      this.listaFiltrada=this.peliculasApi.filter(pelicula =>pelicula.title.toLowerCase().includes(term.toLowerCase()))
-
-    })
   }
-  getPopularMovies():void{
-    this.http.get<any>('http://api.themoviedb.org/3/movie/now_playing?api_key=4431fed8390b02d6c28655feb536156a').subscribe(response=>{this.peliculasApi=response.results;
-  this.listaFiltrada=this.peliculasApi})
+
+  search(): void {
+    this.searchService.setSearchTerm(this.searchTerm); // Establece el término de búsqueda en el servicio
+  }
+
+  getPopularMovies(): void {
+    this.http.get<any>('http://api.themoviedb.org/3/movie/now_playing?api_key=4431fed8390b02d6c28655feb536156a')
+      .subscribe(response => {
+        this.peliculasApi = response.results;
+        this.listaFiltrada = this.peliculasApi;
+      });
   }
 }
-
