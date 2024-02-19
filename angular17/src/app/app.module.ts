@@ -11,6 +11,7 @@ import { CarruselComponent } from './carrusel/carrusel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { DetallesComponent } from './detalles/detalles.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DetallesComponent } from './detalles/detalles.component';
     CarruselComponent,
     NavbarComponent,
     DetallesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
