@@ -1,45 +1,56 @@
-//movie-search.component.ts
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface Movie {
-  title: string;
-  // Agrega otras propiedades según sea necesario
-}
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SearchService } from '../services/search.service';
+import { Subject, of } from 'rxjs'; // Importa 'of' para retornar un observable vacío
+import { takeUntil, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-search',
   templateUrl: './movie-search.component.html',
-  styleUrls: ['./movie-search.component.css']
+  styleUrls: ['./movie-search.component.scss']
 })
-export class MovieSearchComponent implements OnInit {
+export class MovieSearchComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
-  movies: Movie[] = [];
-  filteredMovies: Movie[] = [];
+  movies: any[] = [];
+  private destroy$ = new Subject<void>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService) {}
 
-  ngOnInit(): void {
-    this.getPopularMovies();
+  ngOnInit() {
+    console.log('Component initialized');
+    this.activatedRoute.queryParams.pipe(
+      takeUntil(this.destroy$),
+      switchMap(params => {
+        const searchTerm = params['searchTerm'];
+        if (searchTerm) {
+          this.searchTerm = searchTerm;
+          console.log("Search term:", searchTerm); // Añade esto para depurar
+          return this.searchService.searchMovies(searchTerm);
+        } else {
+          // Limpia los resultados previos y no realiza una búsqueda
+          this.searchTerm = ''; // Limpia el término de búsqueda
+          this.movies = []; // Limpia los resultados previos
+          return of([]); // Retorna un observable vacío para cumplir con la firma del switchMap
+        }
+      })
+    ).subscribe(movies => {
+      this.movies = movies;
+      console.log(this.movies);
+    }, error => {
+      console.error('Error fetching movies:', error); // Asegúrate de que este bloque de error esté presente
+    });
+    
   }
 
-  search(): void {
-    if (this.searchTerm.trim() === '') {
-      this.filteredMovies = this.movies;
-    } else {
-      this.filteredMovies = this.movies.filter(movie =>
-        movie.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  getPopularMovies(): void {
-    this.http.get<any>('http://api.themoviedb.org/3/movie/now_playing?api_key=4431fed8390b02d6c28655feb536156a')
-      .subscribe(response => {
-        this.movies = response.results;
-        this.filteredMovies = this.movies;
-      }, error => {
-        console.error('Error fetching movies:', error);
-      });
+
+  searchMovies(term: string) {
+    this.searchService.searchMovies(term).subscribe(movies => {
+      this.movies = movies;
+    });
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PeliculasService } from '../services/peliculas.service';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-home',

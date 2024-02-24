@@ -9,10 +9,11 @@
 
         
     </ul>
-    <form class="d-flex" (submit)="search()">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm">
+    <form class="d-flex" (ngSubmit)="search()" #searchForm="ngForm">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" name="search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+    
     
     </div>
 </div>

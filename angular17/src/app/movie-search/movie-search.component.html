@@ -1,1 +1,11 @@
-<p>movie-search works!</p>
+<!-- movie-search.component.html -->
+<div *ngIf="movies.length > 0; else noResults">
+  <ul>
+    <li *ngFor="let movie of movies">
+      {{ movie.title }} - {{ movie.release_date | date }}
+    </li>
+  </ul>
+</div>
+<ng-template #noResults>
+  <p>No se encontraron películas que coincidan con la búsqueda.</p>
+</ng-template>
