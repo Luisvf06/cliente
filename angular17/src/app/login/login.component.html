@@ -1,0 +1,13 @@
+<form [formGroup]="myForm" (ngSubmit)="saveData()">
+    <div>
+        <label>Nombre</label>
+        <input formControlName="nombre" type="text"/>
+        <p *ngIf="myForm.get('nombre')!.touched && myForm.get('nombre')!.hasError('required')">El campo es obligatorio</p>
+    </div>
+    <div>
+        <label>Contraseña</label>
+        <input formControlName="contrasenha" type="password" />
+        <p *ngIf="myForm.get('contrasenha')!.touched && myForm.get('contrasenha')!.hasError('required')">El campo es obligatorio</p>
+    </div>
+    <button type="submit" [disabled]="myForm.invalid">Login</button>
+</form>

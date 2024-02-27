@@ -7,6 +7,7 @@ import { NavbarComponent} from './navbar/navbar.component'
 import { PeliculasService } from './services/peliculas.service';
 import { HomeComponent } from './home/home.component'
 import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
   { path: '',component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   },*/
   { path: 'detalles/:id', component: DetallesComponent },
   { path: '', redirectTo: '', pathMatch: 'full' },
+  {path:'login',component:LoginComponent},
 
 ];
 
