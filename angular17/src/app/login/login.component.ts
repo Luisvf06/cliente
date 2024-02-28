@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoginService } from '../services/login.service'; // Asegúrate de que la ruta de importación sea correcta
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,32 +9,32 @@ import { LoginService } from '../services/login.service'; // Asegúrate de que l
 })
 export class LoginComponent {
   myForm = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    contrasenha: new FormControl('', Validators.required)
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   constructor(private loginService: LoginService) {}
 
-  saveData() {
-    const nombre = this.myForm.get('nombre')?.value ?? '';
-    const contrasenha = this.myForm.get('contrasenha')?.value ?? '';
-  
-    // Asumiendo que el método login ya está definido en tu servicio
-    this.loginService.validateTokenWithLogin(nombre, contrasenha, 'tu_request_token_aquí').subscribe({
+  login() {
+    const username = this.myForm.get('username')?.value;
+    const password = this.myForm.get('password')?.value;
+
+    // Paso 1: Solicitar un request_token
+    this.loginService.getRequestToken().subscribe({
       next: (response) => {
-        console.log(response);
-        // Maneja la respuesta exitosa aquí
-        if (response.success) {
-          console.log('Login exitoso');
-          // Por ejemplo, guardar el token recibido en el almacenamiento local y redirigir al usuario
-        } else {
-          console.log('Credenciales incorrectas o error en la respuesta');
-          // Maneja el caso de credenciales incorrectas o errores en la respuesta
-        }
+        const requestToken = response.request_token;
+        // Paso 2 (manual): Redirigir al usuario para autorizar el request_token...
+        // Esta parte depende de tu flujo de UX.
+
+        // Simulación de Paso 3: Crear un ID de sesión
+        // Suponiendo que ya tienes el request_token autorizado (este paso normalmente sería después de una redirección o acción del usuario)
+        this.loginService.createSessionId(requestToken).subscribe(sessionResponse => {
+          console.log('Session ID:', sessionResponse.session_id);
+          // Aquí manejarías la lógica post-autenticación, como almacenar el session_id y redirigir al usuario
+        });
       },
-      error: (error: any) => {
-        console.error('Error en la solicitud', error);
-        // Maneja el error aquí
+      error: (error) => {
+        console.error('Error obteniendo el request_token:', error);
       }
     });
   }
