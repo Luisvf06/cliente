@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // Añade Router aquí
+import { PeliculasService } from '../services/peliculas.service';
 import { SearchService } from '../services/search.service';
-import { Subject, of } from 'rxjs'; // Importa 'of' para retornar un observable vacío
+import { Subject, of } from 'rxjs';
 import { takeUntil, switchMap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http'; // Importa HttpErrorResponse
 
 @Component({
   selector: 'app-movie-search',
@@ -14,7 +16,12 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
   movies: any[] = [];
   private destroy$ = new Subject<void>();
 
-  constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService) {}
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    private PeliculasService: PeliculasService,
+    public searchService: SearchService,
+    private router: Router // Inyecta Router aquí
+  ) {}
 
   ngOnInit() {
     console.log('Component initialized');
@@ -41,7 +48,16 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
     });
     
   }
-
+  verDetallesPelicula(id: number): void {
+    this.PeliculasService.getDetallesPelicula(id).subscribe(
+      (data: any) => {
+        this.router.navigate(['/detalles', id]);
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error al obtener los detalles de la película', error);
+      }
+    );
+  }
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();

@@ -17,6 +17,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { SearchService } from './services/search.service';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoginService } from './services/login.service';
     HomeComponent,
     MovieSearchComponent,
     LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

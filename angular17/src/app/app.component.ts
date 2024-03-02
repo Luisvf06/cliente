@@ -20,16 +20,20 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, private searchService: SearchService) {} // Inyecta el servicio
 
   ngOnInit(): void {
-    this.getPopularMovies();
-  }
+    this.searchService.getPopularMovies().subscribe(movies => {
+      this.peliculasApi = movies;
+      this.listaFiltrada = movies;
+  });
+}
   searchMovies(searchTerm: string) {
     this.router.navigate(['/search'], { queryParams: { searchTerm: searchTerm } });
   }
   // Dentro de AppComponent
 
   search() {
-    this.router.navigate(['/search'], { queryParams: { term: this.searchTerm } });
+    this.router.navigate(['/movie-search'], { queryParams: { searchTerm: this.searchTerm } });
   }
+  
 
   getPopularMovies(): void {
     this.http.get<any>('http://api.themoviedb.org/3/movie/now_playing?api_key=4431fed8390b02d6c28655feb536156a')

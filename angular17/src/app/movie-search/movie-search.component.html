@@ -2,7 +2,8 @@
 <div *ngIf="movies.length > 0; else noResults">
   <ul>
     <li *ngFor="let movie of movies">
-      {{ movie.title }} - {{ movie.release_date | date }}
+      <img [src]="searchService.getImagenPelicula(movie.poster_path)" [alt]="movie.title" style="width: 100px; height: auto;" (click)="verDetallesPelicula(movie.id)">
+      {{ movie.title }} - {{ movie.release_date | date:'mediumDate' }}
     </li>
   </ul>
 </div>

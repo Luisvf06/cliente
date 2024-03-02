@@ -14,28 +14,27 @@ export class LoginComponent {
   });
 
   constructor(private loginService: LoginService) {}
-
   login() {
-    const username = this.myForm.get('username')?.value;
-    const password = this.myForm.get('password')?.value;
-
-    // Paso 1: Solicitar un request_token
+    const username = this.myForm.get('username')?.value ?? '';
+    const password = this.myForm.get('password')?.value ?? '';
+  
     this.loginService.getRequestToken().subscribe({
-      next: (response) => {
-        const requestToken = response.request_token;
-        // Paso 2 (manual): Redirigir al usuario para autorizar el request_token...
-        // Esta parte depende de tu flujo de UX.
+      next: (tokenResponse) => {
 
-        // Simulación de Paso 3: Crear un ID de sesión
-        // Suponiendo que ya tienes el request_token autorizado (este paso normalmente sería después de una redirección o acción del usuario)
-        this.loginService.createSessionId(requestToken).subscribe(sessionResponse => {
-          console.log('Session ID:', sessionResponse.session_id);
-          // Aquí manejarías la lógica post-autenticación, como almacenar el session_id y redirigir al usuario
+        const requestToken = tokenResponse.request_token ?? '';
+        this.loginService.validateWithLogin(username, password, requestToken).subscribe({
+          next: (validateResponse) => {
+
+            this.loginService.createSessionId(requestToken).subscribe(sessionResponse => {
+              console.log('Session ID:', sessionResponse.session_id);
+
+            });
+          },
+          error: (error) => console.error('Error validando el token:', error),
         });
       },
-      error: (error) => {
-        console.error('Error obteniendo el request_token:', error);
-      }
+      error: (error) => console.error('Error obteniendo el request_token:', error),
     });
   }
+  
 }

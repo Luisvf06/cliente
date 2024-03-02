@@ -8,10 +8,11 @@ import { PeliculasService } from './services/peliculas.service';
 import { HomeComponent } from './home/home.component'
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
   { path: '',component: HomeComponent},
-  { path: 'search', component: MovieSearchComponent },
+  { path: 'movie-search', component: MovieSearchComponent },
   /*{ 
     path: 'detalles', 
     component: navbar, // Asegúrate de tener un componente para la barra de navegación en la página principal
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'detalles/:id', component: DetallesComponent },
   { path: '', redirectTo: '', pathMatch: 'full' },
   {path:'login',component:LoginComponent},
+  {path: 'registro',component:RegistroComponent}
 
 ];
 
