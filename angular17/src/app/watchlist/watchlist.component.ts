@@ -1,3 +1,4 @@
+// watchlist.component.ts
 import { Component, OnInit } from '@angular/core';
 import { WatchlistService } from '../services/watchlist.service';
 
@@ -17,22 +18,13 @@ export class WatchlistComponent implements OnInit {
 
   getWatchlistMovies(): void {
     this.watchlistService.getWatchlistMovies()
-      .subscribe((data: any) => { // Especifica el tipo de data como any
+      .subscribe((data: any) => {
         this.movies = data.results;
         this.movies.sort((a, b) => b.vote_average - a.vote_average);
-      }, error => {
+      }, (error: any) => { // Especifica el tipo de error como any o el tipo adecuado si lo conoces
         console.error('Error fetching watchlist movies', error);
       });
   }
   
-
-  removeMovie(movieId: number): void {
-    this.watchlistService.removeMovieFromWatchlist(movieId)
-      .subscribe(response => {
-        console.log('Movie removed successfully');
-        this.getWatchlistMovies();
-      }, error => {
-        console.error('Error removing movie from watchlist', error);
-      });
-  }
+  
 }
