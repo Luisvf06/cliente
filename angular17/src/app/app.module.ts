@@ -18,7 +18,7 @@ import { SearchService } from './services/search.service';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
 import { RegistroComponent } from './registro/registro.component';
-
+import {WatchlistService} from './services/watchlist.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,7 @@ import { RegistroComponent } from './registro/registro.component';
     AppRoutingModule,
     FormsModule,ReactiveFormsModule 
   ],
-  providers: [PeliculasService, SearchService,LoginService],
+  providers: [PeliculasService, SearchService,LoginService, WatchlistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

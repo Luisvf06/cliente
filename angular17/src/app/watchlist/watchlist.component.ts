@@ -1,27 +1,38 @@
-import { Component , OnInit} from '@angular/core';
-import { PeliculasService } from '../services/peliculas.service';
+import { Component, OnInit } from '@angular/core';
+import { WatchlistService } from '../services/watchlist.service';
+
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',
-  styleUrl: './watchlist.component.scss'
+  styleUrls: ['./watchlist.component.scss']
 })
-export class WatchlistComponent implements OnInit{
-  peliculas: any[] = [];
+export class WatchlistComponent implements OnInit {
+  movies: any[] = [];
 
-  constructor(private peliculasService: PeliculasService) {}
+  constructor(private watchlistService: WatchlistService) { }
 
   ngOnInit(): void {
-    this.getPeliculas();
+    this.getWatchlistMovies();
   }
-  getPeliculas(): void {
-    this.peliculasService.getPeliculas().subscribe(
-      (data: any) => {
-        // Accede a la propiedad 'results' del objeto de respuesta
-        this.peliculas = data.results;
-      },
-      (error) => {
-        console.error('Error al obtener las películas', error);
-      }
-    );
+
+  getWatchlistMovies(): void {
+    this.watchlistService.getWatchlistMovies()
+      .subscribe((data: any) => { // Especifica el tipo de data como any
+        this.movies = data.results;
+        this.movies.sort((a, b) => b.vote_average - a.vote_average);
+      }, error => {
+        console.error('Error fetching watchlist movies', error);
+      });
+  }
+  
+
+  removeMovie(movieId: number): void {
+    this.watchlistService.removeMovieFromWatchlist(movieId)
+      .subscribe(response => {
+        console.log('Movie removed successfully');
+        this.getWatchlistMovies();
+      }, error => {
+        console.error('Error removing movie from watchlist', error);
+      });
   }
 }

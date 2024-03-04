@@ -1,30 +1,23 @@
-// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { DetallesComponent } from './detalles/detalles.component';
-import { NavbarComponent} from './navbar/navbar.component'
-import { PeliculasService } from './services/peliculas.service';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
-  { path: '',component: HomeComponent},
+  { path: 'home', component: HomeComponent }, // Agrega una ruta específica para la página de inicio si es diferente de ''
   { path: 'movie-search', component: MovieSearchComponent },
-  /*{ 
-    path: 'detalles', 
-    component: navbar, // Asegúrate de tener un componente para la barra de navegación en la página principal
-    children: [
-      { path: 'detalles/:id', component: DetallesComponent }
-    ]
-  },*/
   { path: 'detalles/:id', component: DetallesComponent },
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  {path:'login',component:LoginComponent},
-  {path: 'registro',component:RegistroComponent}
-
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'watchlist', component: WatchlistComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige al componente Home por defecto
+  { path: '**', redirectTo: '/home' } // Manejo de rutas no encontradas
 ];
 
 @NgModule({
