@@ -19,6 +19,9 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
 import { RegistroComponent } from './registro/registro.component';
 import {WatchlistService} from './services/watchlist.service';
+import { CommonModule } from '@angular/common';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,13 +33,15 @@ import {WatchlistService} from './services/watchlist.service';
     MovieSearchComponent,
     LoginComponent,
     RegistroComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule, // Configura correctamente RouterModule
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule 
+    FormsModule,ReactiveFormsModule ,
+    CommonModule
   ],
   providers: [PeliculasService, SearchService,LoginService, WatchlistService],
   bootstrap: [AppComponent]

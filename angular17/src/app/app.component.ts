@@ -23,8 +23,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPopularMovies();
+    this.getWatchlistMovies();
   }
-
+  getWatchlistMovies(): void {
+    this.watchlistService.getWatchlistMovies().subscribe((data: any) => {
+      // Haz algo con las películas de la watchlist
+      console.log(data.results);
+      // Por ejemplo, podrías asignar las películas a una variable para mostrarlas en la plantilla
+    }, error => {
+      console.error('Error fetching watchlist movies', error);
+    });
+  }
   search() {
     this.router.navigate(['/movie-search'], { queryParams: { searchTerm: this.searchTerm } });
   }
