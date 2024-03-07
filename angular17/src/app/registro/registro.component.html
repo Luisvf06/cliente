@@ -1,31 +1,31 @@
 <form [formGroup]="registroForm" (ngSubmit)="register()">
-  <!-- ... otras entradas ... -->
+  
   <div>
     <label for="email">Email</label>
     <input type="email" formControlName="email">
     <span *ngIf="registroForm.get('email')?.touched && registroForm.get('email')?.hasError('required')">Email es obligatorio</span>
     <span *ngIf="registroForm.get('email')?.hasError('email')">Email no es válido</span>
   </div>
-  <!-- ... -->
+  
   <div>
     <label for="password1">Contraseña</label>
     <input type="password" formControlName="password1">
     <span *ngIf="registroForm.get('password1')?.touched && registroForm.get('password1')?.hasError('required')">Contraseña es obligatoria</span>
     <span *ngIf="registroForm.get('password1')?.hasError('minlength')">Contraseña debe ser de al menos 6 caracteres</span>
   </div>
-  <!-- ... -->
+  
   <div>
     <label for="password2">Confirmar Contraseña</label>
     <input type="password" formControlName="password2">
     <span *ngIf="registroForm.get('password2')?.touched && registroForm.get('password2')?.hasError('required')">Confirmar contraseña es obligatoria</span>
     <span *ngIf="registroForm.get('password2')?.hasError('notEquivalent')">Las contraseñas no coinciden</span>
   </div>
-  <!-- ... -->
+  
   <div>
     <label for="rol">Rol</label>
     <input type="text" formControlName="rol">
     <span *ngIf="registroForm.get('rol')?.touched && registroForm.get('rol')?.hasError('required')">Rol es obligatorio</span>
   </div>
-  <!-- ... -->
+  
   <button type="submit" [disabled]="!registroForm.valid">Registrar</button>
 </form>

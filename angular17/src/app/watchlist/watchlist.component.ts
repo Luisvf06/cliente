@@ -43,9 +43,9 @@ export class WatchlistComponent implements OnInit {
     }
   }
 
-  // Define la función elegirPeli para manejar la selección de películas
+  
   elegirPeli(movie: any): void {
     console.log('Película elegida:', movie);
-    // Aquí puedes implementar la lógica que necesites cuando se elige una película
+    
   }
 }

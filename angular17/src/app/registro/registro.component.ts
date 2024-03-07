@@ -9,15 +9,14 @@ import { RegistroUsuario } from '../interfaces/registro-usuario.interface';
   styleUrls: ['./registro.component.scss'],
 })
 export class RegistroComponent implements OnInit {
-  // Inicializar con un FormGroup vacío para asegurar que nunca sea undefined.
+  
   registroForm: FormGroup = this.fb.group({});
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
-    // No es necesario hacer más en el constructor
+    
   }
 
   ngOnInit() {
-    // Configurar el FormGroup en ngOnInit
     this.registroForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],

@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
   private baseUrl = 'https://api.themoviedb.org/3';
-  private apiKey = '4431fed8390b02d6c28655feb536156a'; // Asegúrate de usar tu propia API key
-
+  private apiKey = '4431fed8390b02d6c28655feb536156a';
+  private token='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NDMxZmVkODM5MGIwMmQ2YzI4NjU1ZmViNTM2MTU2YSIsInN1YiI6IjY1YThmOTNlYzRmNTUyMDEyNzhlNjU2OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nArKWLxihtW5aycNC-GAqUwF7JGeo_Rj13o_5ZA7K3w';
   constructor(private http: HttpClient) {}
 
   getRequestToken(): Observable<any> {
