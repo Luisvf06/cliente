@@ -21,10 +21,7 @@ import { RegistroComponent } from './registro/registro.component';
 import {WatchlistService} from './services/watchlist.service';
 import { CommonModule } from '@angular/common';
 import { WatchlistComponent } from './watchlist/watchlist.component';
-<<<<<<< HEAD
 import { CookieService } from 'ngx-cookie-service';
-=======
->>>>>>> refs/remotes/origin/main
 
 @NgModule({
   declarations: [
@@ -37,13 +34,9 @@ import { CookieService } from 'ngx-cookie-service';
     MovieSearchComponent,
     LoginComponent,
     RegistroComponent,
-<<<<<<< HEAD
     WatchlistComponent,
     LoginComponent,
     RegistroComponent,
-=======
-    WatchlistComponent
->>>>>>> refs/remotes/origin/main
   ],
   imports: [
     BrowserModule,

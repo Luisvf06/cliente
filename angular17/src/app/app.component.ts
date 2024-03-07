@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     this.watchlistService.getWatchlistMovies().subscribe((data: any) => {
       console.log(data.results);
 
-      // Por ejemplo, podrías asignar las películas a una variable para mostrarlas en la plantilla
+    
     }, error => {
       console.error('Error fetching watchlist movies', error);
     });

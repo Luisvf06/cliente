@@ -10,14 +10,14 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
 
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
-  { path: 'home', component: HomeComponent }, // Agrega una ruta específica para la página de inicio si es diferente de ''
+  { path: 'home', component: HomeComponent }, 
   { path: 'movie-search', component: MovieSearchComponent },
   { path: 'detalles/:id', component: DetallesComponent },
   { path: 'login', component: LoginComponent, pathMatch: "full"},
   { path: 'registro', component: RegistroComponent,pathMatch: "full" },
   { path: 'watchlist', component: WatchlistComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige al componente Home por defecto
-  { path: '**', redirectTo: '/home' } // Manejo de rutas no encontradas
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: '**', redirectTo: '/home' } 
 ];
 
 @NgModule({

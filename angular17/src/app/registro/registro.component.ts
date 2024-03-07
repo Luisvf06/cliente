@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/registro.service';
 import { RegistroUsuario } from '../interfaces/registro-usuario.interface';
 
@@ -8,29 +8,41 @@ import { RegistroUsuario } from '../interfaces/registro-usuario.interface';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss'],
 })
-export class RegistroComponent {
-  email: string = ''; // Define email
-  password: string = ''; // Define password
-  confirmPassword: string = ''; // Define confirmPassword
+export class RegistroComponent implements OnInit {
+  // Inicializar con un FormGroup vacío para asegurar que nunca sea undefined.
+  registroForm: FormGroup = this.fb.group({});
 
-  registroForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password1: new FormControl('', Validators.required),
-    password2: new FormControl('', Validators.required),
-  });
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    // No es necesario hacer más en el constructor
+  }
 
-  constructor(private authService: AuthService) {}
+  ngOnInit() {
+    // Configurar el FormGroup en ngOnInit
+    this.registroForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
+      password1: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required, Validators.minLength(6)]],
+      rol: ['', [Validators.required]]
+    }, { validator: this.mustMatch('password1', 'password2') });
+  }
 
-  onSubmit() {
+  mustMatch(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup) => {
+      let passwordInput = group.controls[passwordKey],
+          passwordConfirmationInput = group.controls[confirmPasswordKey];
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({notEquivalent: true});
+      }
+      else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    };
+  }
+
+  register() {
     if (this.registroForm.valid) {
-      const usuario: RegistroUsuario = {
-        username: this.registroForm.get('username')?.value ?? '',
-        email: this.registroForm.get('email')?.value ?? '',
-        password1: this.registroForm.get('password1')?.value ?? '',
-        password2: this.registroForm.get('password2')?.value ?? '',
-        rol: this.registroForm.get('rol')?.value ?? ''
-      };
-  
+      const usuario: RegistroUsuario = this.registroForm.value;
       this.authService.registrar(usuario).subscribe({
         next: (response) => {
           console.log('Usuario registrado con éxito', response);
@@ -40,9 +52,5 @@ export class RegistroComponent {
         }
       });
     }
-  }
- 
-  register() {
-    this.onSubmit();
   }
 }
