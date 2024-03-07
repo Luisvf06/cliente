@@ -19,6 +19,10 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login.service';
 import { RegistroComponent } from './registro/registro.component';
 import {WatchlistService} from './services/watchlist.service';
+import { CommonModule } from '@angular/common';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,15 +34,19 @@ import {WatchlistService} from './services/watchlist.service';
     MovieSearchComponent,
     LoginComponent,
     RegistroComponent,
+    WatchlistComponent,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule, // Configura correctamente RouterModule
+    RouterModule, 
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule 
+    FormsModule,ReactiveFormsModule ,
+    CommonModule
   ],
-  providers: [PeliculasService, SearchService,LoginService, WatchlistService],
+  providers: [PeliculasService, SearchService,LoginService, WatchlistService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

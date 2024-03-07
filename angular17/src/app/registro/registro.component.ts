@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/registro.service';
-import { RegistroUsuario } from '../interfaces/registro-usuario.interface'; // Asegúrate de ajustar la ruta de importación correctamente
+import { RegistroUsuario } from '../interfaces/registro-usuario.interface';
 
 @Component({
   selector: 'app-registro',
@@ -9,20 +9,20 @@ import { RegistroUsuario } from '../interfaces/registro-usuario.interface'; // A
   styleUrls: ['./registro.component.scss'],
 })
 export class RegistroComponent {
+  email: string = ''; // Define email
+  password: string = ''; // Define password
+  confirmPassword: string = ''; // Define confirmPassword
+
   registroForm = new FormGroup({
-    username: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     password1: new FormControl('', Validators.required),
     password2: new FormControl('', Validators.required),
-    rol: new FormControl('', Validators.required),
   });
 
   constructor(private authService: AuthService) {}
 
   onSubmit() {
     if (this.registroForm.valid) {
-      // Usamos el operador ?? para proporcionar un valor predeterminado de cadena vacía 
-      // en caso de que algún campo sea null o undefined.
       const usuario: RegistroUsuario = {
         username: this.registroForm.get('username')?.value ?? '',
         email: this.registroForm.get('email')?.value ?? '',
@@ -34,14 +34,15 @@ export class RegistroComponent {
       this.authService.registrar(usuario).subscribe({
         next: (response) => {
           console.log('Usuario registrado con éxito', response);
-          // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error) => {
           console.error('Error al registrar usuario', error);
-          // Aquí puedes manejar el error, por ejemplo, mostrando un mensaje al usuario
         }
       });
     }
   }
-  
+ 
+  register() {
+    this.onSubmit();
+  }
 }

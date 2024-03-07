@@ -1,25 +1,20 @@
-<p>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#formCollapse" aria-expanded="false" aria-controls="formCollapse">
-    Identifícate
-    </button>
-</p>
-<div style="min-height: 120px;">
-    <div class="collapse collapse-horizontal" id="formCollapse">
-        <div class="card card-body" style="width: 100%;">
-            <!-- Formulario de Login -->
-            <form [formGroup]="myForm" (ngSubmit)="login()">
-                <div>
-                    <label>Nombre</label>
-                    <input formControlName="username" type="text"/>
-                    <p *ngIf="myForm.get('username')!.touched && myForm.get('username')!.hasError('required')">El campo es obligatorio</p>
-                </div>
-                <div>
-                    <label>Contraseña</label>
-                    <input formControlName="password" type="password" />
-                    <p *ngIf="myForm.get('password')!.touched && myForm.get('password')!.hasError('required')">El campo es obligatorio</p>
-                </div>
-                <button type="submit" [disabled]="myForm.invalid">Login</button>
-            </form>
-        </div>
-    </div>
-</div>
+<div class="login">
+    <form class="custom-form" method="post">
+      <h1>Login</h1>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Email"
+        required="required"
+      />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Password"
+        required="required"
+      />
+      <button type="submit" (click)="login()">Log in</button>
+    </form>
+  </div>

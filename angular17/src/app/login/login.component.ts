@@ -8,12 +8,16 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  email: string = ''; // Define email
+  password: string = ''; // Define password
+
   myForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
   constructor(private loginService: LoginService) {}
+
   login() {
     const username = this.myForm.get('username')?.value ?? '';
     const password = this.myForm.get('password')?.value ?? '';
@@ -36,5 +40,4 @@ export class LoginComponent {
       error: (error) => console.error('Error obteniendo el request_token:', error),
     });
   }
-  
 }
